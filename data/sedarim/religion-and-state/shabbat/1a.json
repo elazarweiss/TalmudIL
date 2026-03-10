@@ -1,0 +1,72 @@
+{
+  "seder": "religion-and-state",
+  "tractate": "shabbat",
+  "daf": "1a",
+  "mishnah": [
+    {
+      "id": "m1",
+      "text": "מהו רשות הרבים בעניין השבת במדינת ישראל? המרחב הציבורי שבו שוכנים יהודים, מוסלמים, נוצרים וחסרי דת — האם הוא כרשות היחיד שבה כל אחד עושה כרצונו, או כרשות הרבים שבה כולם שותפים בנורמה המשותפת?",
+      "he": "What is the public domain in the matter of Shabbat in the State of Israel? The public space in which Jews, Muslims, Christians, and the non-religious dwell — is it like the private domain where each does as they wish, or like the public domain where all share a common norm?"
+    },
+    {
+      "id": "m2",
+      "text": "הוצאה מרשות לרשות — הנושא את השבת מן המסורת אל המרחב הציבורי, חייב. הנושא את חילול השבת מן הפרט אל הציבור, חייב. שניהם נכנסו לרשות הרבים בלא שהסכימו ביניהם.",
+      "he": "Carrying from domain to domain — one who carries Shabbat observance from private tradition into the public sphere is liable. One who carries Shabbat violation from the individual into the public is also liable. Both have entered the public domain without mutual agreement."
+    }
+  ],
+  "gemara": [
+    {
+      "id": "g1",
+      "speaker": "תיאודור הרצל",
+      "text": "\"אם תרצו, אין זו אגדה\" — כתב הרצל בחזון מדינתו. אך מהי הרצייה הלאומית בעניין השבת? הרצל עצמו חזה מדינה חילונית־אירופאית, שבה הכמרים שומרים על היכליהם ולא נכנסים לפוליטיקה. האם השבת היא עניין לכמרים בלבד, או שהיא עמוד השדרה של הזהות הלאומית?",
+      "he": "\"If you will it, it is no dream\" — Herzl wrote in his vision of the state. But what is the national will regarding Shabbat? Herzl himself envisioned a secular European state in which clergy guard their temples and do not enter politics. Is Shabbat a matter for clergy alone, or is it the backbone of national identity?",
+      "source": "אלטנוילנד, 1902 / Altneuland, 1902"
+    },
+    {
+      "id": "g2",
+      "speaker": "דוד בן-גוריון",
+      "text": "\"מכיוון שאנו מעוניינים בשלום הפנימי ובמניעת פילוג בין שומרי מסורת לחופשיים, שבת תהיה יום המנוחה הרשמי של מדינת ישראל\" — כתב בן-גוריון במכתב הסטטוס קוו לאגודת ישראל, 1947. כך נולדה מדיניות הסטטוס קוו: לא הסדר, לא פתרון — אלא הקפאת הסכסוך.",
+      "he": "\"Since we desire internal peace and the prevention of a rift between the observant and the secular, Shabbat shall be the official day of rest of the State of Israel\" — Ben-Gurion wrote in the Status Quo Letter to Agudat Yisrael, 1947. Thus was born the Status Quo policy: not an arrangement, not a solution — but a freezing of the conflict.",
+      "source": "מכתב הסטטוס קוו, ו' תשרי תש\"ח / Status Quo Letter, October 1947"
+    },
+    {
+      "id": "g3",
+      "speaker": "הרב אברהם יצחק הכהן קוק",
+      "text": "\"השבת היא מקור הברכה לכל ימות השבוע. כשם שהנשמה מחיה את הגוף, כן השבת מחיה את חיי האומה.\" — כתב הרב קוק. אולם הרב קוק גם תמך בבנין הארץ ביד חילונים. האם ניתן לבנות מדינה יהודית על ידי מי שאינם שומרים שבת? זו הפרדוקסה העמוקה ביותר של הציונות הדתית.",
+      "he": "\"The Sabbath is the source of blessing for all the days of the week. As the soul gives life to the body, so Shabbat gives life to the nation's existence.\" — wrote Rav Kook. Yet Rav Kook also supported building the Land by the hands of the secular. Can a Jewish state be built by those who do not observe Shabbat? This is the deepest paradox of Religious Zionism.",
+      "source": "אורות השבת, תרפ\"ג / Orot HaShabbat, 1923"
+    }
+  ],
+  "tosafot": [
+    {
+      "id": "t1",
+      "title": "פסק הדין הורב — בג\"ץ 5016/96",
+      "caseRef": "HCJ 5016/96 Horev v. Minister of Transport",
+      "text": "בית המשפט העליון פסק כי סגירת רחוב בר-אילן בשעות השבת לתנועת מכוניות — כדי שחרדים יוכלו ללכת לבית הכנסת בשקט — היא בגדר האפשר. אולם הנשיא ברק הוסיף: \"פגיעה בחופש התנועה של הנוסעים החילונים טעונה איזון מדוקדק.\" כאן ניצבת המדינה בין שני עקרונות חוקתיים: כבוד הדת ושוויון האזרחים.",
+      "he": "The Supreme Court ruled that closing Bar-Ilan Street during Shabbat hours to motor traffic — so that ultra-Orthodox residents could walk to synagogue in quiet — is permissible. However, President Barak added: \"Infringement on the freedom of movement of secular travelers requires careful balancing.\" Here the state stands between two constitutional principles: respect for religion and equality of citizens."
+    },
+    {
+      "id": "t2",
+      "title": "חוק שעות עבודה ומנוחה, תשי\"א-1951",
+      "caseRef": "Hours of Work and Rest Law, 5711-1951",
+      "text": "החוק קבע את יום השבת כיום המנוחה השבועית לעובד יהודי, ונתן לשרת הדת סמכות להתיר עבודה בשבת בענפים שונים. זה היה הניסיון הראשון של המחוקק הישראלי לגשר בין כלכלת שוק לזמן קדוש. שישים שנה לאחר מכן, המרכזים המסחריים פתוחים בשבת בחיפה — ובבאר שבע הם סגורים.",
+      "he": "The Law established Saturday as the weekly rest day for the Jewish worker, granting the Minister of Religious Affairs authority to permit work on Shabbat in various industries. This was the Israeli legislature's first attempt to bridge market economy and sacred time. Sixty years later, commercial centers are open on Shabbat in Haifa — and in Be'er Sheva they are closed."
+    }
+  ],
+  "rashi": [
+    {
+      "id": "r1",
+      "author": "יואל מרקוס",
+      "source": "הארץ, 1998 / Haaretz, 1998",
+      "text": "\"הישראלים החילונים לא רוצים שישלטו עליהם בשם הדת. הם בנו מדינה, שירתו בצבא, ושילמו מסים — ועכשיו אומרים להם היכן לנסוע בשבת? זוהי אנטי-ציונות ממדרגה ראשונה.\"",
+      "he": "\"Secular Israelis do not want to be ruled in the name of religion. They built a state, served in the army, and paid taxes — and now they are told where to drive on Shabbat? This is anti-Zionism of the first order.\""
+    },
+    {
+      "id": "r2",
+      "author": "אמנון רובינשטיין",
+      "source": "מהמדינה היהודית למדינת ישראל / From Herzl to Rabin, 2000",
+      "text": "\"הפתרון אינו בכפייה ואינו בהפקרות. מדינת ישראל צריכה להגדיר מחדש את המרחב הציבורי היהודי: שבת כנכס תרבותי של כל האזרחים — לא כמצווה דתית הכפויה על כלל הציבור, ולא כיום חולין רגיל.\"",
+      "he": "\"The solution lies neither in coercion nor in licentiousness. The State of Israel must redefine the Jewish public space: Shabbat as a cultural asset of all citizens — not as a religious commandment imposed on the entire public, nor as an ordinary weekday.\""
+    }
+  ]
+}
