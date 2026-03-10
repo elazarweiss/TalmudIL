@@ -1,0 +1,27 @@
+import type { RashiEntry } from '@/types/daf';
+
+interface RashiSectionProps {
+  entries: RashiEntry[];
+}
+
+export default function RashiSection({ entries }: RashiSectionProps) {
+  return (
+    <section>
+      <h2 className="section-title text-rashi">
+        <span className="border-b-2 border-rashi pb-0.5">רש&quot;י</span>
+      </h2>
+      <div className="space-y-5">
+        {entries.map((entry) => (
+          <div key={entry.id} className="bg-rashi-light rounded p-3 border border-rashi/20">
+            <p className="font-bold text-rashi text-sm mb-0.5">{entry.author}</p>
+            <p className="text-xs font-sans text-gray-500 mb-2 italic" dir="ltr">
+              {entry.source}
+            </p>
+            <p className="hebrew-text text-sm">{entry.text}</p>
+            <p className="english-text text-xs" dir="ltr">{entry.he}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
