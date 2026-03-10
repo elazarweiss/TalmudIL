@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-parchment-100 text-ink font-serif;
+  }
+
+  /* Subtle parchment texture */
+  .parchment-texture {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(200, 184, 138, 0.15) 28px,
+        rgba(200, 184, 138, 0.15) 29px
+      );
+  }
+}
+
+@layer components {
+  .daf-column {
+    @apply border-border;
+  }
+
+  .section-title {
+    @apply text-xs font-bold uppercase tracking-widest mb-3 pb-1 border-b border-border;
+  }
+
+  .hebrew-text {
+    @apply leading-8 text-base;
+    direction: rtl;
+    unicode-bidi: embed;
+  }
+
+  .english-text {
+    @apply text-sm leading-6 text-gray-600 mt-2 font-sans;
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+
+  .speaker-label {
+    @apply font-bold text-sm mb-1;
+  }
+
+  .source-label {
+    @apply text-xs text-gray-500 font-sans mt-1 italic;
+    direction: ltr;
+    unicode-bidi: embed;
+  }
+}
