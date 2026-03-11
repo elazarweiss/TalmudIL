@@ -38,6 +38,7 @@ export default async function DafEditorPage({ params }: PageProps) {
         seder={params.seder}
         tractate={params.tractate}
         daf={params.daf}
+        lang="en"
       />
     </AdminLayout>
   );

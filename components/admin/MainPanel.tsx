@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import type { Seder, DafData } from '@/types/daf';
 import type { ViewState } from '@/types/admin';
+import type { Lang } from '@/lib/admin-i18n';
+import { getT } from '@/lib/admin-i18n';
 import DafEditor from './DafEditor';
 import { NewSederForm, NewTractateForm, NewDafForm, EditSederPanel } from './InlineForms';
 
@@ -11,6 +13,7 @@ interface MainPanelProps {
   view: ViewState;
   onViewChange: (v: ViewState) => void;
   onSedarimChange: () => void;
+  lang: Lang;
 }
 
 export default function MainPanel({
@@ -18,13 +21,16 @@ export default function MainPanel({
   view,
   onViewChange,
   onSedarimChange,
+  lang,
 }: MainPanelProps) {
+  const t = getT(lang);
+
   if (view.type === 'welcome') {
     return (
       <div className="flex items-center justify-center h-full text-gray-400">
         <div className="text-center space-y-2">
-          <p className="text-2xl font-light">TalmudIL Admin</p>
-          <p className="text-sm">Select a daf from the sidebar to begin editing.</p>
+          <p className="text-2xl font-light">{t.welcomeTitle}</p>
+          <p className="text-sm">{t.welcomeSubtitle}</p>
         </div>
       </div>
     );
@@ -33,8 +39,9 @@ export default function MainPanel({
   if (view.type === 'new-seder') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">New Seder</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newSederTitle}</h2>
         <NewSederForm
+          lang={lang}
           onSuccess={() => {
             onSedarimChange();
             onViewChange({ type: 'welcome' });
@@ -48,9 +55,10 @@ export default function MainPanel({
   if (view.type === 'new-tractate') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">New Tractate</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newTractateTitle}</h2>
         <NewTractateForm
           sederId={view.sederId}
+          lang={lang}
           onSuccess={() => {
             onSedarimChange();
             onViewChange({ type: 'welcome' });
@@ -64,10 +72,11 @@ export default function MainPanel({
   if (view.type === 'edit-seder') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Edit Seder</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.editSederTitle}</h2>
         <EditSederPanel
           sederId={view.sederId}
           sedarim={sedarim}
+          lang={lang}
           onSuccess={() => {
             onSedarimChange();
             onViewChange({ type: 'welcome' });
@@ -85,11 +94,12 @@ export default function MainPanel({
   if (view.type === 'new-daf') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">New Daf</h2>
+        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newDafTitle}</h2>
         <NewDafForm
           sedarim={sedarim}
           sederId={view.sederId}
           tractateId={view.tractateId}
+          lang={lang}
           onSuccess={(seder, tractate, daf) => {
             onSedarimChange();
             onViewChange({ type: 'daf', seder, tractate, daf });
@@ -101,7 +111,14 @@ export default function MainPanel({
   }
 
   if (view.type === 'daf') {
-    return <DafEditorPanel seder={view.seder} tractate={view.tractate} daf={view.daf} />;
+    return (
+      <DafEditorPanel
+        seder={view.seder}
+        tractate={view.tractate}
+        daf={view.daf}
+        lang={lang}
+      />
+    );
   }
 
   return null;
@@ -111,11 +128,14 @@ function DafEditorPanel({
   seder,
   tractate,
   daf,
+  lang,
 }: {
   seder: string;
   tractate: string;
   daf: string;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   const [data, setData] = useState<DafData | null>(null);
   const [error, setError] = useState('');
 
@@ -128,14 +148,14 @@ function DafEditorPanel({
         return r.json();
       })
       .then(setData)
-      .catch(() => setError('Failed to load daf'));
-  }, [seder, tractate, daf]);
+      .catch(() => setError(t.loadFailed));
+  }, [seder, tractate, daf, t.loadFailed]);
 
   if (error) {
     return <div className="p-6 text-red-500">{error}</div>;
   }
   if (!data) {
-    return <div className="p-6 text-gray-400">Loading…</div>;
+    return <div className="p-6 text-gray-400">{t.loading}</div>;
   }
 
   return (
@@ -143,7 +163,7 @@ function DafEditorPanel({
       <h2 className="text-xl font-bold text-gray-800 mb-4">
         <span className="text-gray-500 font-normal text-base">{tractate} /</span> {daf}
       </h2>
-      <DafEditor initial={data} seder={seder} tractate={tractate} daf={daf} />
+      <DafEditor initial={data} seder={seder} tractate={tractate} daf={daf} lang={lang} />
     </div>
   );
 }

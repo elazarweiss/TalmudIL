@@ -38,5 +38,11 @@ export default async function DafRoute({ params }: PageProps) {
     notFound();
   }
 
-  return <DafPage data={data} />;
+  const metadata = await getMetadata();
+  const sederObj = metadata.sedarim.find((s) => s.id === params.seder);
+  const tractateObj = sederObj?.tractates.find((t) => t.id === params.tractate);
+  const sederLabel = sederObj?.hebrewName ?? params.seder;
+  const tractateLabel = tractateObj?.hebrewName ?? params.tractate;
+
+  return <DafPage data={data} sederLabel={sederLabel} tractateLabel={tractateLabel} />;
 }

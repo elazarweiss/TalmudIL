@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import type { DafData } from '@/types/daf';
 import DafHeader from './DafHeader';
 import MishnahSection from './MishnahSection';
@@ -7,12 +10,24 @@ import RashiSection from './RashiSection';
 
 interface DafPageProps {
   data: DafData;
+  sederLabel: string;
+  tractateLabel: string;
 }
 
-export default function DafPage({ data }: DafPageProps) {
+export default function DafPage({ data, sederLabel, tractateLabel }: DafPageProps) {
+  const [lang, setLang] = useState<'he' | 'en'>('en');
+
   return (
     <div className="min-h-screen flex flex-col">
-      <DafHeader seder={data.seder} tractate={data.tractate} daf={data.daf} />
+      <DafHeader
+        seder={data.seder}
+        tractate={data.tractate}
+        daf={data.daf}
+        sederLabel={sederLabel}
+        tractateLabel={tractateLabel}
+        lang={lang}
+        onLangToggle={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
+      />
 
       {/*
         Three-column Talmud grid (RTL):
@@ -27,42 +42,44 @@ export default function DafPage({ data }: DafPageProps) {
 
           {/* Column 1 (Visual Right in RTL): Tosafot — legal commentaries */}
           <div className="daf-column border-b md:border-b-0 md:border-l border-border p-5 bg-parchment-50/80">
-            <TosafotSection entries={data.tosafot} />
+            <TosafotSection entries={data.tosafot} lang={lang} />
           </div>
 
           {/* Column 2 (Visual Center): Mishnah + Gemara — primary text */}
           <div className="daf-column border-b md:border-b-0 p-5 bg-white/40">
-            <MishnahSection entries={data.mishnah} />
+            <MishnahSection entries={data.mishnah} lang={lang} />
             <div className="border-t border-border/50 my-4" />
-            <GemaraSection entries={data.gemara} />
+            <GemaraSection entries={data.gemara} lang={lang} />
           </div>
 
           {/* Column 3 (Visual Left in RTL): Rashi — commentary */}
           <div className="daf-column p-5 bg-parchment-50/80">
-            <RashiSection entries={data.rashi} />
+            <RashiSection entries={data.rashi} lang={lang} />
           </div>
 
         </div>
 
         {/* Footer legend */}
-        <div className="mt-4 flex flex-wrap justify-center gap-6 text-xs font-sans text-gray-500" dir="ltr">
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm bg-mishnah inline-block" />
-            Mishnah — Core Dilemma
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm bg-gemara inline-block" />
-            Gemara — Historical Voices
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm bg-tosafot inline-block" />
-            Tosafot — Legal Rulings
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="w-3 h-3 rounded-sm bg-rashi inline-block" />
-            Rashi — Public Commentary
-          </span>
-        </div>
+        {lang === 'en' && (
+          <div className="mt-4 flex flex-wrap justify-center gap-6 text-xs font-sans text-gray-500" dir="ltr">
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm bg-mishnah inline-block" />
+              Mishnah — Core Dilemma
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm bg-gemara inline-block" />
+              Gemara — Historical Voices
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm bg-tosafot inline-block" />
+              Tosafot — Legal Rulings
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-3 h-3 rounded-sm bg-rashi inline-block" />
+              Rashi — Public Commentary
+            </span>
+          </div>
+        )}
       </main>
     </div>
   );

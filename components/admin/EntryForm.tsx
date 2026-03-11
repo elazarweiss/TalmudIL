@@ -6,6 +6,8 @@ import type {
   TosafotEntry,
   RashiEntry,
 } from '@/types/daf';
+import type { Lang } from '@/lib/admin-i18n';
+import { getT } from '@/lib/admin-i18n';
 import SourcePicker from './SourcePicker';
 
 // ---- Generic bilingual textarea pair ----
@@ -51,11 +53,15 @@ function BilingualFields({
 function CardHeader({
   id,
   verified,
+  verifiedLabel,
+  deleteLabel,
   onVerifiedChange,
   onDelete,
 }: {
   id: string;
   verified: boolean;
+  verifiedLabel: string;
+  deleteLabel: string;
   onVerifiedChange: (v: boolean) => void;
   onDelete: () => void;
 }) {
@@ -69,10 +75,10 @@ function CardHeader({
             checked={verified}
             onChange={(e) => onVerifiedChange(e.target.checked)}
           />
-          Verified
+          {verifiedLabel}
         </label>
         <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
-          Delete
+          {deleteLabel}
         </button>
       </div>
     </div>
@@ -84,22 +90,27 @@ export function MishnahForm({
   entry,
   onChange,
   onDelete,
+  lang,
 }: {
   entry: MishnahEntry;
   onChange: (e: MishnahEntry) => void;
   onDelete: () => void;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   return (
     <div className="rounded-lg border border-gray-200 border-l-4 border-l-yellow-500 bg-white shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
+        verifiedLabel={t.verified}
+        deleteLabel={t.delete}
         onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
         onDelete={onDelete}
       />
       <BilingualFields
-        heLabel="Hebrew text"
-        enLabel="English translation"
+        heLabel={t.hebrewText}
+        enLabel={t.englishTranslation}
         heValue={entry.text}
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
@@ -108,6 +119,7 @@ export function MishnahForm({
       <SourcePicker
         sourceId={entry.sourceId}
         onChange={(id) => onChange({ ...entry, sourceId: id })}
+        lang={lang}
       />
     </div>
   );
@@ -118,22 +130,27 @@ export function GemaraForm({
   entry,
   onChange,
   onDelete,
+  lang,
 }: {
   entry: GemaraEntry;
   onChange: (e: GemaraEntry) => void;
   onDelete: () => void;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   return (
     <div className="rounded-lg border border-gray-200 border-l-4 border-l-orange-400 bg-white shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
+        verifiedLabel={t.verified}
+        deleteLabel={t.delete}
         onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
         onDelete={onDelete}
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Speaker (Hebrew)</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.speakerHebrew}</label>
           <input
             className="input text-sm"
             value={entry.speaker}
@@ -142,7 +159,7 @@ export function GemaraForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Source</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.source}</label>
           <input
             className="input text-sm"
             value={entry.source}
@@ -152,8 +169,8 @@ export function GemaraForm({
         </div>
       </div>
       <BilingualFields
-        heLabel="Hebrew quote"
-        enLabel="English translation"
+        heLabel={t.hebrewQuote}
+        enLabel={t.englishTranslation}
         heValue={entry.text}
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
@@ -162,6 +179,7 @@ export function GemaraForm({
       <SourcePicker
         sourceId={entry.sourceId}
         onChange={(id) => onChange({ ...entry, sourceId: id })}
+        lang={lang}
       />
     </div>
   );
@@ -172,22 +190,27 @@ export function TosafotForm({
   entry,
   onChange,
   onDelete,
+  lang,
 }: {
   entry: TosafotEntry;
   onChange: (e: TosafotEntry) => void;
   onDelete: () => void;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   return (
     <div className="rounded-lg border border-gray-200 border-l-4 border-l-blue-400 bg-white shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
+        verifiedLabel={t.verified}
+        deleteLabel={t.delete}
         onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
         onDelete={onDelete}
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Title (Hebrew)</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.titleHebrew}</label>
           <input
             className="input text-sm"
             value={entry.title}
@@ -196,7 +219,7 @@ export function TosafotForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Case Reference</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.caseRef}</label>
           <input
             className="input text-sm"
             value={entry.caseRef}
@@ -206,8 +229,8 @@ export function TosafotForm({
         </div>
       </div>
       <BilingualFields
-        heLabel="Hebrew text"
-        enLabel="English translation"
+        heLabel={t.hebrewText}
+        enLabel={t.englishTranslation}
         heValue={entry.text}
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
@@ -216,6 +239,7 @@ export function TosafotForm({
       <SourcePicker
         sourceId={entry.sourceId}
         onChange={(id) => onChange({ ...entry, sourceId: id })}
+        lang={lang}
       />
     </div>
   );
@@ -226,22 +250,27 @@ export function RashiForm({
   entry,
   onChange,
   onDelete,
+  lang,
 }: {
   entry: RashiEntry;
   onChange: (e: RashiEntry) => void;
   onDelete: () => void;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   return (
     <div className="rounded-lg border border-gray-200 border-l-4 border-l-amber-500 bg-white shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
+        verifiedLabel={t.verified}
+        deleteLabel={t.delete}
         onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
         onDelete={onDelete}
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Author</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.author}</label>
           <input
             className="input text-sm"
             value={entry.author}
@@ -250,7 +279,7 @@ export function RashiForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">Source</label>
+          <label className="block text-xs text-gray-500 mb-1">{t.source}</label>
           <input
             className="input text-sm"
             value={entry.source}
@@ -260,8 +289,8 @@ export function RashiForm({
         </div>
       </div>
       <BilingualFields
-        heLabel="Hebrew text"
-        enLabel="English translation"
+        heLabel={t.hebrewText}
+        enLabel={t.englishTranslation}
         heValue={entry.text}
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
@@ -270,6 +299,7 @@ export function RashiForm({
       <SourcePicker
         sourceId={entry.sourceId}
         onChange={(id) => onChange({ ...entry, sourceId: id })}
+        lang={lang}
       />
     </div>
   );

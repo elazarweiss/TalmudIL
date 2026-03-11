@@ -2,9 +2,10 @@ import type { RashiEntry } from '@/types/daf';
 
 interface RashiSectionProps {
   entries: RashiEntry[];
+  lang: 'he' | 'en';
 }
 
-export default function RashiSection({ entries }: RashiSectionProps) {
+export default function RashiSection({ entries, lang }: RashiSectionProps) {
   return (
     <section>
       <h2 className="section-title text-rashi">
@@ -14,11 +15,15 @@ export default function RashiSection({ entries }: RashiSectionProps) {
         {entries.map((entry) => (
           <div key={entry.id} className="bg-rashi-light rounded p-3 border border-rashi/20">
             <p className="font-bold text-rashi text-sm mb-0.5">{entry.author}</p>
-            <p className="text-xs font-sans text-gray-500 mb-2 italic" dir="ltr">
-              {entry.source}
-            </p>
+            {lang === 'en' && (
+              <p className="text-xs font-sans text-gray-500 mb-2 italic" dir="ltr">
+                {entry.source}
+              </p>
+            )}
             <p className="hebrew-text text-sm">{entry.text}</p>
-            <p className="english-text text-xs" dir="ltr">{entry.he}</p>
+            {lang === 'en' && (
+              <p className="english-text text-xs" dir="ltr">{entry.he}</p>
+            )}
           </div>
         ))}
       </div>

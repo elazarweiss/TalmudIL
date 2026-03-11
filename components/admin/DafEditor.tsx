@@ -8,6 +8,8 @@ import type {
   TosafotEntry,
   RashiEntry,
 } from '@/types/daf';
+import type { Lang } from '@/lib/admin-i18n';
+import { getT } from '@/lib/admin-i18n';
 import {
   MishnahForm,
   GemaraForm,
@@ -25,6 +27,8 @@ function makeId(prefix: string, list: { id: string }[]) {
 
 interface SectionProps<T extends { id: string }> {
   title: string;
+  entriesLabel: string;
+  addLabel: string;
   entries: T[];
   renderEntry: (entry: T, onChange: (e: T) => void, onDelete: () => void) => React.ReactNode;
   onAdd: () => void;
@@ -34,6 +38,8 @@ interface SectionProps<T extends { id: string }> {
 
 function Section<T extends { id: string }>({
   title,
+  entriesLabel,
+  addLabel,
   entries,
   renderEntry,
   onAdd,
@@ -57,7 +63,7 @@ function Section<T extends { id: string }>({
           </svg>
           {title}
         </span>
-        <span className="text-gray-400 text-sm">{entries.length} entries</span>
+        <span className="text-gray-400 text-sm">{entries.length} {entriesLabel}</span>
       </summary>
 
       <div className="p-4 space-y-3">
@@ -73,7 +79,7 @@ function Section<T extends { id: string }>({
           onClick={onAdd}
           className="text-sm bg-gray-100 hover:bg-gray-200 rounded px-3 py-1.5"
         >
-          + Add entry
+          {addLabel}
         </button>
       </div>
     </details>
@@ -85,12 +91,15 @@ export default function DafEditor({
   seder,
   tractate,
   daf,
+  lang,
 }: {
   initial: DafData;
   seder: string;
   tractate: string;
   daf: string;
+  lang: Lang;
 }) {
+  const t = getT(lang);
   const [data, setData] = useState<DafData>(initial);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -109,7 +118,7 @@ export default function DafEditor({
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } else {
-      setError('Save failed');
+      setError(t.saveFailed);
     }
     setSaving(false);
   }
@@ -117,7 +126,9 @@ export default function DafEditor({
   return (
     <div className="space-y-4">
       <Section<MishnahEntry>
-        title="Mishnah"
+        title={t.mishnah}
+        entriesLabel={t.entries}
+        addLabel={t.addEntry}
         entries={data.mishnah}
         defaultOpen={true}
         onChangeAll={(mishnah) => setData({ ...data, mishnah })}
@@ -131,12 +142,14 @@ export default function DafEditor({
           })
         }
         renderEntry={(entry, onChange, onDelete) => (
-          <MishnahForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} />
+          <MishnahForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} lang={lang} />
         )}
       />
 
       <Section<GemaraEntry>
-        title="Gemara"
+        title={t.gemara}
+        entriesLabel={t.entries}
+        addLabel={t.addEntry}
         entries={data.gemara}
         defaultOpen={true}
         onChangeAll={(gemara) => setData({ ...data, gemara })}
@@ -157,12 +170,14 @@ export default function DafEditor({
           })
         }
         renderEntry={(entry, onChange, onDelete) => (
-          <GemaraForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} />
+          <GemaraForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} lang={lang} />
         )}
       />
 
       <Section<TosafotEntry>
-        title="Tosafot"
+        title={t.tosafot}
+        entriesLabel={t.entries}
+        addLabel={t.addEntry}
         entries={data.tosafot}
         defaultOpen={false}
         onChangeAll={(tosafot) => setData({ ...data, tosafot })}
@@ -183,12 +198,14 @@ export default function DafEditor({
           })
         }
         renderEntry={(entry, onChange, onDelete) => (
-          <TosafotForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} />
+          <TosafotForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} lang={lang} />
         )}
       />
 
       <Section<RashiEntry>
-        title="Rashi"
+        title={t.rashi}
+        entriesLabel={t.entries}
+        addLabel={t.addEntry}
         entries={data.rashi}
         defaultOpen={false}
         onChangeAll={(rashi) => setData({ ...data, rashi })}
@@ -209,7 +226,7 @@ export default function DafEditor({
           })
         }
         renderEntry={(entry, onChange, onDelete) => (
-          <RashiForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} />
+          <RashiForm key={entry.id} entry={entry} onChange={onChange} onDelete={onDelete} lang={lang} />
         )}
       />
 
@@ -220,9 +237,9 @@ export default function DafEditor({
           disabled={saving}
           className="bg-blue-600 text-white rounded px-5 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
         >
-          {saving ? 'Saving…' : 'Save Daf'}
+          {saving ? t.saving : t.saveDaf}
         </button>
-        {saved && <span className="text-green-600 text-sm">Saved!</span>}
+        {saved && <span className="text-green-600 text-sm">{t.saved}</span>}
         {error && <span className="text-red-600 text-sm">{error}</span>}
       </div>
     </div>

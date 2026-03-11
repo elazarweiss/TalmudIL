@@ -3,14 +3,18 @@
 import { useState } from 'react';
 import type { Seder } from '@/types/daf';
 import type { ViewState } from '@/types/admin';
+import type { Lang } from '@/lib/admin-i18n';
+import { getT } from '@/lib/admin-i18n';
 
 interface SidebarTreeProps {
   sedarim: Seder[];
   view: ViewState;
   onViewChange: (v: ViewState) => void;
+  lang: Lang;
 }
 
-export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTreeProps) {
+export default function SidebarTree({ sedarim, view, onViewChange, lang }: SidebarTreeProps) {
+  const t = getT(lang);
   const [expandedSedarim, setExpandedSedarim] = useState<Set<string>>(new Set());
   const [expandedTractates, setExpandedTractates] = useState<Set<string>>(new Set());
 
@@ -45,7 +49,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
     <nav className="h-full flex flex-col py-2">
       <div className="flex-1 overflow-y-auto">
         {sedarim.length === 0 && (
-          <p className="px-3 py-2 text-xs text-gray-500">No sedarim yet.</p>
+          <p className="px-3 py-2 text-xs text-gray-500">{t.noSedarim}</p>
         )}
         {sedarim.map((seder) => {
           const isExpanded = expandedSedarim.has(seder.id);
@@ -70,7 +74,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
                   type="button"
                   onClick={() => onViewChange({ type: 'edit-seder', sederId: seder.id })}
                   className="text-xs text-gray-600 hover:text-gray-300 px-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                  title="Edit seder"
+                  title={t.editSederTip}
                 >
                   ✎
                 </button>
@@ -78,7 +82,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
                   type="button"
                   onClick={() => onViewChange({ type: 'new-tractate', sederId: seder.id })}
                   className="text-xs text-gray-600 hover:text-gray-300 px-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                  title="New tractate"
+                  title={t.newTractateTip}
                 >
                   +T
                 </button>
@@ -114,7 +118,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
                               onViewChange({ type: 'new-daf', sederId: seder.id, tractateId: tractate.id })
                             }
                             className="text-xs text-gray-600 hover:text-gray-300 px-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                            title="New daf"
+                            title={t.newDafTip}
                           >
                             +D
                           </button>
@@ -149,7 +153,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
                               );
                             })}
                             {tractate.dafs.length === 0 && (
-                              <span className="text-xs text-gray-600 px-2">No dafs yet</span>
+                              <span className="text-xs text-gray-600 px-2">{t.noDafs}</span>
                             )}
                           </div>
                         )}
@@ -158,7 +162,7 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
                   })}
 
                   {seder.tractates.length === 0 && (
-                    <span className="text-xs text-gray-600 block px-2 py-0.5">No tractates yet</span>
+                    <span className="text-xs text-gray-600 block px-2 py-0.5">{t.noTractates}</span>
                   )}
                 </div>
               )}
@@ -174,13 +178,13 @@ export default function SidebarTree({ sedarim, view, onViewChange }: SidebarTree
           onClick={() => onViewChange({ type: 'new-seder' })}
           className="w-full text-left text-xs text-gray-400 hover:text-white px-2 py-1 rounded hover:bg-gray-700"
         >
-          + New Seder
+          {t.newSeder}
         </button>
         <a
           href="/admin/sources"
           className="block text-xs text-gray-400 hover:text-white px-2 py-1 rounded hover:bg-gray-700"
         >
-          Sources →
+          {t.sources}
         </a>
       </div>
     </nav>

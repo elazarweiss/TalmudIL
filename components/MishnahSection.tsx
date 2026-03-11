@@ -2,9 +2,10 @@ import type { MishnahEntry } from '@/types/daf';
 
 interface MishnahSectionProps {
   entries: MishnahEntry[];
+  lang: 'he' | 'en';
 }
 
-export default function MishnahSection({ entries }: MishnahSectionProps) {
+export default function MishnahSection({ entries, lang }: MishnahSectionProps) {
   return (
     <section className="mb-6">
       <h2
@@ -17,7 +18,9 @@ export default function MishnahSection({ entries }: MishnahSectionProps) {
         {entries.map((entry) => (
           <div key={entry.id} className="bg-mishnah-light rounded p-3 border border-mishnah/20">
             <p className="hebrew-text text-mishnah font-medium">{entry.text}</p>
-            <p className="english-text" dir="ltr">{entry.he}</p>
+            {lang === 'en' && (
+              <p className="english-text" dir="ltr">{entry.he}</p>
+            )}
           </div>
         ))}
       </div>

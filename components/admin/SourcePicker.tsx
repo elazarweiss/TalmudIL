@@ -2,13 +2,17 @@
 
 import { useState, useRef, useEffect } from 'react';
 import type { Source } from '@/types/daf';
+import type { Lang } from '@/lib/admin-i18n';
+import { getT } from '@/lib/admin-i18n';
 
 interface SourcePickerProps {
   sourceId?: string;
   onChange: (sourceId: string | undefined) => void;
+  lang: Lang;
 }
 
-export default function SourcePicker({ sourceId, onChange }: SourcePickerProps) {
+export default function SourcePicker({ sourceId, onChange, lang }: SourcePickerProps) {
+  const t = getT(lang);
   const [open, setOpen] = useState(false);
   const [sources, setSources] = useState<Source[] | null>(null);
   const [filter, setFilter] = useState('');
@@ -54,7 +58,7 @@ export default function SourcePicker({ sourceId, onChange }: SourcePickerProps) 
   return (
     <div className="relative" ref={containerRef}>
       <div className="flex items-center gap-2">
-        <span className="text-xs text-gray-500">Source</span>
+        <span className="text-xs text-gray-500">{t.source}</span>
         {linked ? (
           <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-800 text-xs rounded-full px-2 py-0.5">
             {linked.title}
@@ -73,7 +77,7 @@ export default function SourcePicker({ sourceId, onChange }: SourcePickerProps) 
             onClick={() => setOpen((o) => !o)}
             className="text-xs text-blue-600 hover:underline"
           >
-            + Link source
+            {t.linkSource}
           </button>
         )}
       </div>
@@ -84,17 +88,17 @@ export default function SourcePicker({ sourceId, onChange }: SourcePickerProps) 
             <input
               autoFocus
               className="w-full text-xs border border-gray-300 rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-blue-500"
-              placeholder="Filter sources…"
+              placeholder={t.filterSources}
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             />
           </div>
           <ul className="max-h-48 overflow-y-auto">
             {loading && (
-              <li className="px-3 py-2 text-xs text-gray-400">Loading…</li>
+              <li className="px-3 py-2 text-xs text-gray-400">{t.loading}</li>
             )}
             {!loading && filtered.length === 0 && (
-              <li className="px-3 py-2 text-xs text-gray-400">No sources found</li>
+              <li className="px-3 py-2 text-xs text-gray-400">{t.noSourcesFound}</li>
             )}
             {filtered.map((s) => (
               <li key={s.id}>
