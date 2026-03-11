@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { getMetadata } from '@/lib/metadata';
 
 interface DafHeaderProps {
@@ -16,7 +17,7 @@ export default async function DafHeader({ seder, tractate, daf }: DafHeaderProps
 
   return (
     <header className="border-b-2 border-border bg-parchment-200 px-6 py-4">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-1">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-1 relative">
         {/* Platform title */}
         <h1 className="text-2xl font-black tracking-tight text-ink">
           תלמוד ישראל
@@ -24,6 +25,15 @@ export default async function DafHeader({ seder, tractate, daf }: DafHeaderProps
         <p className="text-xs font-sans text-gray-500 tracking-widest uppercase" dir="ltr">
           The Israeli Constitutional Talmud
         </p>
+
+        {/* Admin link */}
+        <Link
+          href={`/admin/dafs/${seder}/${tractate}/${daf}`}
+          className="absolute left-0 top-0 text-xs font-sans text-gray-400 hover:text-gray-600 transition-colors"
+          dir="ltr"
+        >
+          ✎ edit
+        </Link>
 
         {/* Seder / Tractate / Daf */}
         <div className="mt-2 flex items-center gap-3 text-sm font-sans text-gray-600">
