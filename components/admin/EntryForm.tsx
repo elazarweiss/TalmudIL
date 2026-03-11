@@ -6,6 +6,7 @@ import type {
   TosafotEntry,
   RashiEntry,
 } from '@/types/daf';
+import SourcePicker from './SourcePicker';
 
 // ---- Generic bilingual textarea pair ----
 function BilingualFields({
@@ -28,7 +29,7 @@ function BilingualFields({
       <div>
         <label className="block text-xs text-gray-500 mb-1">{heLabel}</label>
         <textarea
-          className="input h-28 text-sm"
+          className="w-full h-32 resize-y rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:outline-none"
           value={heValue}
           onChange={(e) => onHeChange(e.target.value)}
           dir="rtl"
@@ -37,11 +38,42 @@ function BilingualFields({
       <div>
         <label className="block text-xs text-gray-500 mb-1">{enLabel}</label>
         <textarea
-          className="input h-28 text-sm"
+          className="w-full h-32 resize-y rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:outline-none"
           value={enValue}
           onChange={(e) => onEnChange(e.target.value)}
           dir="ltr"
         />
+      </div>
+    </div>
+  );
+}
+
+function CardHeader({
+  id,
+  verified,
+  onVerifiedChange,
+  onDelete,
+}: {
+  id: string;
+  verified: boolean;
+  onVerifiedChange: (v: boolean) => void;
+  onDelete: () => void;
+}) {
+  return (
+    <div className="flex justify-between items-center">
+      <span className="text-xs font-mono text-gray-400">{id}</span>
+      <div className="flex items-center gap-3">
+        <label className="flex items-center gap-1 text-xs text-gray-600 cursor-pointer">
+          <input
+            type="checkbox"
+            checked={verified}
+            onChange={(e) => onVerifiedChange(e.target.checked)}
+          />
+          Verified
+        </label>
+        <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
+          Delete
+        </button>
       </div>
     </div>
   );
@@ -58,23 +90,13 @@ export function MishnahForm({
   onDelete: () => void;
 }) {
   return (
-    <div className="border rounded p-3 space-y-2 bg-mishnah/5">
-      <div className="flex justify-between items-center">
-        <span className="text-xs font-mono text-gray-400">{entry.id}</span>
-        <div className="flex items-center gap-3">
-          <label className="flex items-center gap-1 text-xs text-gray-600">
-            <input
-              type="checkbox"
-              checked={entry.verified ?? false}
-              onChange={(e) => onChange({ ...entry, verified: e.target.checked })}
-            />
-            Verified
-          </label>
-          <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
-            Delete
-          </button>
-        </div>
-      </div>
+    <div className="rounded-lg border border-gray-200 border-l-4 border-l-yellow-500 bg-white shadow-sm p-4 space-y-3">
+      <CardHeader
+        id={entry.id}
+        verified={entry.verified ?? false}
+        onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
+        onDelete={onDelete}
+      />
       <BilingualFields
         heLabel="Hebrew text"
         enLabel="English translation"
@@ -82,6 +104,10 @@ export function MishnahForm({
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
         onEnChange={(v) => onChange({ ...entry, he: v })}
+      />
+      <SourcePicker
+        sourceId={entry.sourceId}
+        onChange={(id) => onChange({ ...entry, sourceId: id })}
       />
     </div>
   );
@@ -98,23 +124,13 @@ export function GemaraForm({
   onDelete: () => void;
 }) {
   return (
-    <div className="border rounded p-3 space-y-2 bg-gemara/5">
-      <div className="flex justify-between items-center">
-        <span className="text-xs font-mono text-gray-400">{entry.id}</span>
-        <div className="flex items-center gap-3">
-          <label className="flex items-center gap-1 text-xs text-gray-600">
-            <input
-              type="checkbox"
-              checked={entry.verified ?? false}
-              onChange={(e) => onChange({ ...entry, verified: e.target.checked })}
-            />
-            Verified
-          </label>
-          <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
-            Delete
-          </button>
-        </div>
-      </div>
+    <div className="rounded-lg border border-gray-200 border-l-4 border-l-orange-400 bg-white shadow-sm p-4 space-y-3">
+      <CardHeader
+        id={entry.id}
+        verified={entry.verified ?? false}
+        onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
+        onDelete={onDelete}
+      />
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs text-gray-500 mb-1">Speaker (Hebrew)</label>
@@ -143,6 +159,10 @@ export function GemaraForm({
         onHeChange={(v) => onChange({ ...entry, text: v })}
         onEnChange={(v) => onChange({ ...entry, he: v })}
       />
+      <SourcePicker
+        sourceId={entry.sourceId}
+        onChange={(id) => onChange({ ...entry, sourceId: id })}
+      />
     </div>
   );
 }
@@ -158,23 +178,13 @@ export function TosafotForm({
   onDelete: () => void;
 }) {
   return (
-    <div className="border rounded p-3 space-y-2 bg-blue-50">
-      <div className="flex justify-between items-center">
-        <span className="text-xs font-mono text-gray-400">{entry.id}</span>
-        <div className="flex items-center gap-3">
-          <label className="flex items-center gap-1 text-xs text-gray-600">
-            <input
-              type="checkbox"
-              checked={entry.verified ?? false}
-              onChange={(e) => onChange({ ...entry, verified: e.target.checked })}
-            />
-            Verified
-          </label>
-          <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
-            Delete
-          </button>
-        </div>
-      </div>
+    <div className="rounded-lg border border-gray-200 border-l-4 border-l-blue-400 bg-white shadow-sm p-4 space-y-3">
+      <CardHeader
+        id={entry.id}
+        verified={entry.verified ?? false}
+        onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
+        onDelete={onDelete}
+      />
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs text-gray-500 mb-1">Title (Hebrew)</label>
@@ -203,6 +213,10 @@ export function TosafotForm({
         onHeChange={(v) => onChange({ ...entry, text: v })}
         onEnChange={(v) => onChange({ ...entry, he: v })}
       />
+      <SourcePicker
+        sourceId={entry.sourceId}
+        onChange={(id) => onChange({ ...entry, sourceId: id })}
+      />
     </div>
   );
 }
@@ -218,23 +232,13 @@ export function RashiForm({
   onDelete: () => void;
 }) {
   return (
-    <div className="border rounded p-3 space-y-2 bg-amber-50">
-      <div className="flex justify-between items-center">
-        <span className="text-xs font-mono text-gray-400">{entry.id}</span>
-        <div className="flex items-center gap-3">
-          <label className="flex items-center gap-1 text-xs text-gray-600">
-            <input
-              type="checkbox"
-              checked={entry.verified ?? false}
-              onChange={(e) => onChange({ ...entry, verified: e.target.checked })}
-            />
-            Verified
-          </label>
-          <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
-            Delete
-          </button>
-        </div>
-      </div>
+    <div className="rounded-lg border border-gray-200 border-l-4 border-l-amber-500 bg-white shadow-sm p-4 space-y-3">
+      <CardHeader
+        id={entry.id}
+        verified={entry.verified ?? false}
+        onVerifiedChange={(v) => onChange({ ...entry, verified: v })}
+        onDelete={onDelete}
+      />
       <div className="grid grid-cols-2 gap-3">
         <div>
           <label className="block text-xs text-gray-500 mb-1">Author</label>
@@ -262,6 +266,10 @@ export function RashiForm({
         enValue={entry.he}
         onHeChange={(v) => onChange({ ...entry, text: v })}
         onEnChange={(v) => onChange({ ...entry, he: v })}
+      />
+      <SourcePicker
+        sourceId={entry.sourceId}
+        onChange={(id) => onChange({ ...entry, sourceId: id })}
       />
     </div>
   );

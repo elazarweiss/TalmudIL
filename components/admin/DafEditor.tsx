@@ -29,6 +29,7 @@ interface SectionProps<T extends { id: string }> {
   renderEntry: (entry: T, onChange: (e: T) => void, onDelete: () => void) => React.ReactNode;
   onAdd: () => void;
   onChangeAll: (entries: T[]) => void;
+  defaultOpen?: boolean;
 }
 
 function Section<T extends { id: string }>({
@@ -37,39 +38,45 @@ function Section<T extends { id: string }>({
   renderEntry,
   onAdd,
   onChangeAll,
+  defaultOpen = true,
 }: SectionProps<T>) {
-  const [open, setOpen] = useState(true);
-
   return (
-    <div className="border rounded mb-4">
-      <button
-        type="button"
-        className="w-full flex justify-between items-center px-4 py-3 bg-gray-50 hover:bg-gray-100 text-left"
-        onClick={() => setOpen((o) => !o)}
-      >
-        <span className="font-semibold text-gray-700">{title}</span>
-        <span className="text-gray-400 text-sm">{open ? '▲' : '▼'} {entries.length} entries</span>
-      </button>
-
-      {open && (
-        <div className="p-4 space-y-3">
-          {entries.map((entry) =>
-            renderEntry(
-              entry,
-              (updated) => onChangeAll(entries.map((e) => (e.id === entry.id ? updated : e))),
-              () => onChangeAll(entries.filter((e) => e.id !== entry.id))
-            )
-          )}
-          <button
-            type="button"
-            onClick={onAdd}
-            className="text-sm bg-gray-100 hover:bg-gray-200 rounded px-3 py-1.5"
+    <details open={defaultOpen} className="border rounded mb-4">
+      <summary className="flex justify-between items-center px-4 py-3 bg-gray-50 hover:bg-gray-100 cursor-pointer">
+        <span className="font-semibold text-gray-700 flex items-center gap-2">
+          <svg
+            className="accordion-chevron w-3 h-3 text-gray-500"
+            viewBox="0 0 10 10"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
-            + Add entry
-          </button>
-        </div>
-      )}
-    </div>
+            <path d="M3 2l4 3-4 3" />
+          </svg>
+          {title}
+        </span>
+        <span className="text-gray-400 text-sm">{entries.length} entries</span>
+      </summary>
+
+      <div className="p-4 space-y-3">
+        {entries.map((entry) =>
+          renderEntry(
+            entry,
+            (updated) => onChangeAll(entries.map((e) => (e.id === entry.id ? updated : e))),
+            () => onChangeAll(entries.filter((e) => e.id !== entry.id))
+          )
+        )}
+        <button
+          type="button"
+          onClick={onAdd}
+          className="text-sm bg-gray-100 hover:bg-gray-200 rounded px-3 py-1.5"
+        >
+          + Add entry
+        </button>
+      </div>
+    </details>
   );
 }
 
@@ -112,6 +119,7 @@ export default function DafEditor({
       <Section<MishnahEntry>
         title="Mishnah"
         entries={data.mishnah}
+        defaultOpen={true}
         onChangeAll={(mishnah) => setData({ ...data, mishnah })}
         onAdd={() =>
           setData({
@@ -130,6 +138,7 @@ export default function DafEditor({
       <Section<GemaraEntry>
         title="Gemara"
         entries={data.gemara}
+        defaultOpen={true}
         onChangeAll={(gemara) => setData({ ...data, gemara })}
         onAdd={() =>
           setData({
@@ -155,6 +164,7 @@ export default function DafEditor({
       <Section<TosafotEntry>
         title="Tosafot"
         entries={data.tosafot}
+        defaultOpen={false}
         onChangeAll={(tosafot) => setData({ ...data, tosafot })}
         onAdd={() =>
           setData({
@@ -180,6 +190,7 @@ export default function DafEditor({
       <Section<RashiEntry>
         title="Rashi"
         entries={data.rashi}
+        defaultOpen={false}
         onChangeAll={(rashi) => setData({ ...data, rashi })}
         onAdd={() =>
           setData({

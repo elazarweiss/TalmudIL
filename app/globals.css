@@ -65,3 +65,17 @@
     unicode-bidi: embed;
   }
 }
+
+/* Accordion chevron animation */
+.accordion-chevron {
+  transition: transform 150ms ease;
+}
+details[open] summary .accordion-chevron {
+  transform: rotate(90deg);
+}
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
