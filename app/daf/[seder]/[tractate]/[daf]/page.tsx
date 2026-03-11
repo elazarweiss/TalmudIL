@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
-import { getDafData } from '@/lib/daf';
+import { getDafData, listAllDafs } from '@/lib/daf';
 import DafPage from '@/components/DafPage';
+import { getMetadata } from '@/lib/metadata';
 
 interface PageProps {
   params: {
@@ -11,18 +12,17 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return [
-    { seder: 'religion-and-state', tractate: 'shabbat', daf: '1a' },
-  ];
+  return await listAllDafs();
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const sederLabels: Record<string, string> = {
-    'religion-and-state': 'דת ומדינה',
-  };
-  const tractateLabels: Record<string, string> = {
-    shabbat: 'שבת',
-  };
+  const metadata = await getMetadata();
+  const sederLabels: Record<string, string> = Object.fromEntries(
+    metadata.sedarim.map((s) => [s.id, s.hebrewName])
+  );
+  const tractateLabels: Record<string, string> = Object.fromEntries(
+    metadata.sedarim.flatMap((s) => s.tractates.map((t) => [t.id, t.hebrewName]))
+  );
   const sederLabel = sederLabels[params.seder] ?? params.seder;
   const tractateLabel = tractateLabels[params.tractate] ?? params.tractate;
   return {

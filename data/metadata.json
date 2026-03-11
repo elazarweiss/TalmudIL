@@ -1,0 +1,17 @@
+{
+  "sedarim": [
+    {
+      "id": "religion-and-state",
+      "hebrewName": "דת ומדינה",
+      "englishName": "Religion and State",
+      "tractates": [
+        {
+          "id": "shabbat",
+          "hebrewName": "שבת",
+          "englishName": "Shabbat",
+          "dafs": ["1a"]
+        }
+      ]
+    }
+  ]
+}

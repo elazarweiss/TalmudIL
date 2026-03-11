@@ -1,0 +1,81 @@
+{
+  "sources": [
+    {
+      "id": "herzl-altneuland-1902",
+      "author": "תיאודור הרצל / Theodor Herzl",
+      "title": "אלטנוילנד / Altneuland",
+      "year": 1902,
+      "type": "book",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Verify quote against original text"
+    },
+    {
+      "id": "ben-gurion-status-quo-1947",
+      "author": "דוד בן-גוריון / David Ben-Gurion",
+      "title": "מכתב הסטטוס קוו / Status Quo Letter",
+      "year": 1947,
+      "type": "letter",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Verify against Agudat Yisrael archives"
+    },
+    {
+      "id": "rav-kook-orot-hashabbat-1923",
+      "author": "הרב אברהם יצחק הכהן קוק / Rabbi Abraham Isaac Kook",
+      "title": "אורות השבת / Orot HaShabbat",
+      "year": 1923,
+      "type": "book",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Verify exact quote and year"
+    },
+    {
+      "id": "hcj-5016-96-horev",
+      "author": "בית המשפט העליון / Supreme Court of Israel",
+      "title": "בג\"ץ 5016/96 הורב / HCJ 5016/96 Horev v. Minister of Transport",
+      "year": 1996,
+      "type": "ruling",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Pull from official Supreme Court records"
+    },
+    {
+      "id": "hours-work-rest-law-1951",
+      "author": "כנסת ישראל / Knesset",
+      "title": "חוק שעות עבודה ומנוחה, תשי\"א-1951 / Hours of Work and Rest Law, 5711-1951",
+      "year": 1951,
+      "type": "law",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Available on Nevo legal database"
+    },
+    {
+      "id": "yoel-marcus-haaretz-1998",
+      "author": "יואל מרקוס / Yoel Marcus",
+      "title": "הארץ / Haaretz",
+      "year": 1998,
+      "type": "article",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Locate original article in Haaretz archives"
+    },
+    {
+      "id": "rubinstein-from-herzl-to-rabin-2000",
+      "author": "אמנון רובינשטיין / Amnon Rubinstein",
+      "title": "מהמדינה היהודית למדינת ישראל / From Herzl to Rabin",
+      "year": 2000,
+      "type": "book",
+      "originalText": "",
+      "englishTranslation": "",
+      "verified": false,
+      "notes": "Verify page number and exact quote"
+    }
+  ]
+}

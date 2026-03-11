@@ -1,20 +1,18 @@
+import { getMetadata } from '@/lib/metadata';
+
 interface DafHeaderProps {
   seder: string;
   tractate: string;
   daf: string;
 }
 
-const sederLabels: Record<string, string> = {
-  'religion-and-state': 'דת ומדינה',
-};
+export default async function DafHeader({ seder, tractate, daf }: DafHeaderProps) {
+  const metadata = await getMetadata();
+  const sederObj = metadata.sedarim.find((s) => s.id === seder);
+  const tractateObj = sederObj?.tractates.find((t) => t.id === tractate);
 
-const tractateLabels: Record<string, string> = {
-  shabbat: 'שבת',
-};
-
-export default function DafHeader({ seder, tractate, daf }: DafHeaderProps) {
-  const sederLabel = sederLabels[seder] ?? seder;
-  const tractateLabel = tractateLabels[tractate] ?? tractate;
+  const sederLabel = sederObj?.hebrewName ?? seder;
+  const tractateLabel = tractateObj?.hebrewName ?? tractate;
 
   return (
     <header className="border-b-2 border-border bg-parchment-200 px-6 py-4">
