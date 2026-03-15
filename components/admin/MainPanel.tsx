@@ -27,10 +27,10 @@ export default function MainPanel({
 
   if (view.type === 'welcome') {
     return (
-      <div className="flex items-center justify-center h-full text-gray-400">
+      <div className="flex items-center justify-center h-full text-ink/40">
         <div className="text-center space-y-2">
-          <p className="text-2xl font-light">{t.welcomeTitle}</p>
-          <p className="text-sm">{t.welcomeSubtitle}</p>
+          <p className="font-serif text-2xl font-light">{t.welcomeTitle}</p>
+          <p className="font-sans text-sm">{t.welcomeSubtitle}</p>
         </div>
       </div>
     );
@@ -39,7 +39,7 @@ export default function MainPanel({
   if (view.type === 'new-seder') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newSederTitle}</h2>
+        <h2 className="font-serif text-xl font-bold text-ink mb-4">{t.newSederTitle}</h2>
         <NewSederForm
           lang={lang}
           onSuccess={() => {
@@ -55,7 +55,7 @@ export default function MainPanel({
   if (view.type === 'new-tractate') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newTractateTitle}</h2>
+        <h2 className="font-serif text-xl font-bold text-ink mb-4">{t.newTractateTitle}</h2>
         <NewTractateForm
           sederId={view.sederId}
           lang={lang}
@@ -72,7 +72,7 @@ export default function MainPanel({
   if (view.type === 'edit-seder') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.editSederTitle}</h2>
+        <h2 className="font-serif text-xl font-bold text-ink mb-4">{t.editSederTitle}</h2>
         <EditSederPanel
           sederId={view.sederId}
           sedarim={sedarim}
@@ -94,7 +94,7 @@ export default function MainPanel({
   if (view.type === 'new-daf') {
     return (
       <div className="p-6 max-w-lg">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">{t.newDafTitle}</h2>
+        <h2 className="font-serif text-xl font-bold text-ink mb-4">{t.newDafTitle}</h2>
         <NewDafForm
           sedarim={sedarim}
           sederId={view.sederId}
@@ -155,13 +155,13 @@ function DafEditorPanel({
     return <div className="p-6 text-red-500">{error}</div>;
   }
   if (!data) {
-    return <div className="p-6 text-gray-400">{t.loading}</div>;
+    return <div className="p-6 font-sans text-ink/40">{t.loading}</div>;
   }
 
   return (
     <div className="p-6 overflow-y-auto">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">
-        <span className="text-gray-500 font-normal text-base">{tractate} /</span> {daf}
+      <h2 className="font-serif text-xl font-bold text-ink mb-4">
+        <span className="font-sans text-ink/50 font-normal text-base">{tractate} /</span> {daf}
       </h2>
       <DafEditor initial={data} seder={seder} tractate={tractate} daf={daf} lang={lang} />
     </div>

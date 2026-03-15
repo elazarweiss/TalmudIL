@@ -16,9 +16,9 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-sm font-medium text-gray-700 mb-1">
+      <label className="block font-sans text-sm font-medium text-ink mb-1">
         {label}{' '}
-        {hint && <span className="text-gray-400 font-normal">({hint})</span>}
+        {hint && <span className="text-ink/50 font-normal">({hint})</span>}
       </label>
       {children}
     </div>
@@ -59,7 +59,7 @@ export function NewSederForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded shadow p-6 space-y-4">
+    <form onSubmit={handleSubmit} className="bg-parchment-50 rounded border border-border shadow-sm p-6 space-y-4">
       <Field label={t.idSlug} hint={t.idHintSeder}>
         <input
           className="input"
@@ -92,14 +92,14 @@ export function NewSederForm({
         <button
           type="submit"
           disabled={saving}
-          className="bg-blue-600 text-white rounded px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="font-sans bg-mishnah text-parchment-100 rounded px-4 py-2 text-sm font-medium hover:bg-mishnah/90 disabled:opacity-50 transition-colors"
         >
           {saving ? t.saving : t.createSeder}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-100 text-gray-700 rounded px-4 py-2 text-sm font-medium hover:bg-gray-200"
+          className="font-sans bg-parchment-100 text-ink rounded px-4 py-2 text-sm font-medium hover:bg-parchment-200 transition-colors"
         >
           {t.cancel}
         </button>
@@ -144,9 +144,9 @@ export function NewTractateForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded shadow p-6 space-y-4">
-      <p className="text-sm text-gray-500">
-        {t.sederLabel}: <span className="font-mono text-blue-700">{sederId}</span>
+    <form onSubmit={handleSubmit} className="bg-parchment-50 rounded border border-border shadow-sm p-6 space-y-4">
+      <p className="font-sans text-sm text-ink/60">
+        {t.sederLabel}: <span className="font-mono text-mishnah">{sederId}</span>
       </p>
       <Field label={t.idSlug} hint={t.idHintTractate}>
         <input
@@ -181,14 +181,14 @@ export function NewTractateForm({
         <button
           type="submit"
           disabled={saving}
-          className="bg-blue-600 text-white rounded px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="font-sans bg-mishnah text-parchment-100 rounded px-4 py-2 text-sm font-medium hover:bg-mishnah/90 disabled:opacity-50 transition-colors"
         >
           {saving ? t.saving : t.createTractate}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-100 text-gray-700 rounded px-4 py-2 text-sm font-medium hover:bg-gray-200"
+          className="font-sans bg-parchment-100 text-ink rounded px-4 py-2 text-sm font-medium hover:bg-parchment-200 transition-colors"
         >
           {t.cancel}
         </button>
@@ -246,7 +246,7 @@ export function NewDafForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded shadow p-6 space-y-4">
+    <form onSubmit={handleSubmit} className="bg-parchment-50 rounded border border-border shadow-sm p-6 space-y-4">
       <Field label={t.sederLabel}>
         <select
           className="input"
@@ -296,14 +296,14 @@ export function NewDafForm({
         <button
           type="submit"
           disabled={saving}
-          className="bg-blue-600 text-white rounded px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="font-sans bg-mishnah text-parchment-100 rounded px-4 py-2 text-sm font-medium hover:bg-mishnah/90 disabled:opacity-50 transition-colors"
         >
           {saving ? t.saving : t.createDaf}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-100 text-gray-700 rounded px-4 py-2 text-sm font-medium hover:bg-gray-200"
+          className="font-sans bg-parchment-100 text-ink rounded px-4 py-2 text-sm font-medium hover:bg-parchment-200 transition-colors"
         >
           {t.cancel}
         </button>
@@ -375,13 +375,13 @@ export function EditSederPanel({
   }
 
   if (!seder) {
-    return <p className="text-gray-400 text-sm">{t.sederNotFound}</p>;
+    return <p className="font-sans text-ink/50 text-sm">{t.sederNotFound}</p>;
   }
 
   return (
-    <form onSubmit={handleSave} className="bg-white rounded shadow p-6 space-y-4">
-      <p className="text-sm text-gray-500">
-        ID: <span className="font-mono text-blue-700">{sederId}</span>
+    <form onSubmit={handleSave} className="bg-parchment-50 rounded border border-border shadow-sm p-6 space-y-4">
+      <p className="font-sans text-sm text-ink/60">
+        ID: <span className="font-mono text-mishnah">{sederId}</span>
       </p>
       <Field label={t.hebrewName}>
         <input
@@ -406,14 +406,14 @@ export function EditSederPanel({
         <button
           type="submit"
           disabled={saving}
-          className="bg-blue-600 text-white rounded px-4 py-2 text-sm font-medium hover:bg-blue-700 disabled:opacity-50"
+          className="font-sans bg-mishnah text-parchment-100 rounded px-4 py-2 text-sm font-medium hover:bg-mishnah/90 disabled:opacity-50 transition-colors"
         >
           {saving ? t.saving : t.save}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-100 text-gray-700 rounded px-4 py-2 text-sm font-medium hover:bg-gray-200"
+          className="font-sans bg-parchment-100 text-ink rounded px-4 py-2 text-sm font-medium hover:bg-parchment-200 transition-colors"
         >
           {t.cancel}
         </button>
@@ -421,7 +421,7 @@ export function EditSederPanel({
           type="button"
           onClick={handleDelete}
           disabled={deleting}
-          className="ml-auto bg-red-100 text-red-700 rounded px-4 py-2 text-sm font-medium hover:bg-red-200 disabled:opacity-50"
+          className="font-sans ml-auto bg-red-50 text-red-700 rounded px-4 py-2 text-sm font-medium hover:bg-red-100 disabled:opacity-50 transition-colors"
         >
           {deleting ? t.deleting : t.deleteSeder}
         </button>

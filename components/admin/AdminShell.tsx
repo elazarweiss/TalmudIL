@@ -23,7 +23,7 @@ export default function AdminShell({
   onSedarimChange,
 }: AdminShellProps) {
   const router = useRouter();
-  const [lang, setLang] = useState<Lang>('en');
+  const [lang, setLang] = useState<Lang>('he');
   const t = getT(lang);
 
   async function handleLogout() {
@@ -32,20 +32,20 @@ export default function AdminShell({
   }
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden" dir="ltr">
+    <div className="h-screen flex flex-col overflow-hidden" dir="rtl">
       {/* Header */}
-      <header className="bg-gray-900 text-gray-100 px-4 py-2.5 flex items-center justify-between shrink-0 border-b border-gray-800">
-        <span className="font-bold text-sm tracking-wide">{t.adminTitle}</span>
+      <header className="bg-ink text-parchment-100 px-4 py-2.5 flex items-center justify-between shrink-0 border-b border-parchment-300/20">
+        <span className="font-serif font-bold text-base">{t.adminTitle}</span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
-            className="text-xs text-gray-400 hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors border border-gray-700"
+            className="font-sans text-xs text-parchment-300 hover:text-parchment-100 px-3 py-1 rounded-full border border-parchment-300/40 hover:border-parchment-300/80 transition-colors"
           >
             {t.switchLang}
           </button>
           <button
             onClick={handleLogout}
-            className="text-xs text-gray-400 hover:text-white px-3 py-1 rounded hover:bg-gray-700 transition-colors"
+            className="font-sans text-xs text-parchment-300/70 hover:text-parchment-100 px-2 py-1 transition-colors"
           >
             {t.logout}
           </button>
@@ -54,7 +54,7 @@ export default function AdminShell({
 
       {/* Body: sidebar + main */}
       <div className="flex flex-1 overflow-hidden">
-        <aside className="w-56 bg-gray-900 text-gray-100 shrink-0 overflow-hidden flex flex-col border-r border-gray-800">
+        <aside className="w-56 bg-ink text-parchment-100 shrink-0 overflow-hidden flex flex-col border-l border-parchment-300/20">
           <SidebarTree
             sedarim={sedarim}
             view={view}
@@ -63,7 +63,7 @@ export default function AdminShell({
           />
         </aside>
 
-        <main className="flex-1 bg-gray-50 overflow-y-auto">
+        <main className="flex-1 bg-parchment-50 overflow-y-auto">
           <MainPanel
             sedarim={sedarim}
             view={view}

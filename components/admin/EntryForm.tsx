@@ -29,18 +29,18 @@ function BilingualFields({
   return (
     <div className="grid grid-cols-2 gap-3">
       <div>
-        <label className="block text-xs text-gray-500 mb-1">{heLabel}</label>
+        <label className="block font-sans text-xs text-ink/60 mb-1">{heLabel}</label>
         <textarea
-          className="w-full h-32 resize-y rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:outline-none"
+          className="w-full h-32 resize-y rounded-md border border-border bg-parchment-50 px-3 py-2 text-sm focus:border-mishnah focus:ring-1 focus:ring-mishnah/30 focus:outline-none"
           value={heValue}
           onChange={(e) => onHeChange(e.target.value)}
           dir="rtl"
         />
       </div>
       <div>
-        <label className="block text-xs text-gray-500 mb-1">{enLabel}</label>
+        <label className="block font-sans text-xs text-ink/60 mb-1">{enLabel}</label>
         <textarea
-          className="w-full h-32 resize-y rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:outline-none"
+          className="w-full h-32 resize-y rounded-md border border-border bg-parchment-50 px-3 py-2 text-sm focus:border-mishnah focus:ring-1 focus:ring-mishnah/30 focus:outline-none"
           value={enValue}
           onChange={(e) => onEnChange(e.target.value)}
           dir="ltr"
@@ -67,9 +67,9 @@ function CardHeader({
 }) {
   return (
     <div className="flex justify-between items-center">
-      <span className="text-xs font-mono text-gray-400">{id}</span>
+      <span className="font-sans text-xs font-mono text-ink/40">{id}</span>
       <div className="flex items-center gap-3">
-        <label className="flex items-center gap-1 text-xs text-gray-600 cursor-pointer">
+        <label className="flex items-center gap-1 font-sans text-xs text-ink/60 cursor-pointer">
           <input
             type="checkbox"
             checked={verified}
@@ -77,7 +77,7 @@ function CardHeader({
           />
           {verifiedLabel}
         </label>
-        <button type="button" onClick={onDelete} className="text-xs text-red-500 hover:underline">
+        <button type="button" onClick={onDelete} className="font-sans text-xs text-red-600/70 hover:text-red-700 hover:underline">
           {deleteLabel}
         </button>
       </div>
@@ -99,7 +99,7 @@ export function MishnahForm({
 }) {
   const t = getT(lang);
   return (
-    <div className="rounded-lg border border-gray-200 border-l-4 border-l-yellow-500 bg-white shadow-sm p-4 space-y-3">
+    <div className="rounded-lg border border-border border-l-4 border-l-mishnah bg-parchment-50 shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
@@ -139,7 +139,7 @@ export function GemaraForm({
 }) {
   const t = getT(lang);
   return (
-    <div className="rounded-lg border border-gray-200 border-l-4 border-l-orange-400 bg-white shadow-sm p-4 space-y-3">
+    <div className="rounded-lg border border-border border-l-4 border-l-gemara bg-parchment-50 shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
@@ -150,7 +150,7 @@ export function GemaraForm({
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.speakerHebrew}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.speakerHebrew}</label>
           <input
             className="input text-sm"
             value={entry.speaker}
@@ -159,7 +159,7 @@ export function GemaraForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.source}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.source}</label>
           <input
             className="input text-sm"
             value={entry.source}
@@ -199,7 +199,7 @@ export function TosafotForm({
 }) {
   const t = getT(lang);
   return (
-    <div className="rounded-lg border border-gray-200 border-l-4 border-l-blue-400 bg-white shadow-sm p-4 space-y-3">
+    <div className="rounded-lg border border-border border-l-4 border-l-tosafot bg-parchment-50 shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
@@ -210,7 +210,7 @@ export function TosafotForm({
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.titleHebrew}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.titleHebrew}</label>
           <input
             className="input text-sm"
             value={entry.title}
@@ -219,7 +219,7 @@ export function TosafotForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.caseRef}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.caseRef}</label>
           <input
             className="input text-sm"
             value={entry.caseRef}
@@ -259,7 +259,7 @@ export function RashiForm({
 }) {
   const t = getT(lang);
   return (
-    <div className="rounded-lg border border-gray-200 border-l-4 border-l-amber-500 bg-white shadow-sm p-4 space-y-3">
+    <div className="rounded-lg border border-border border-l-4 border-l-rashi bg-parchment-50 shadow-sm p-4 space-y-3">
       <CardHeader
         id={entry.id}
         verified={entry.verified ?? false}
@@ -270,7 +270,7 @@ export function RashiForm({
       />
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.author}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.author}</label>
           <input
             className="input text-sm"
             value={entry.author}
@@ -279,7 +279,7 @@ export function RashiForm({
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 mb-1">{t.source}</label>
+          <label className="block font-sans text-xs text-ink/60 mb-1">{t.source}</label>
           <input
             className="input text-sm"
             value={entry.source}
