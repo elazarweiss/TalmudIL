@@ -8,15 +8,8 @@ interface RashiSectionProps {
 export default function RashiSection({ entries, lang }: RashiSectionProps) {
   return (
     <section>
-      <div className="flex items-baseline gap-3 mb-6 pb-2 border-b border-rashi/30">
-        <h2 className="section-title text-rashi mb-0 pb-0 border-0">רש&quot;י</h2>
-        {lang === 'en' && (
-          <span className="font-display italic text-rashi/60 text-base" dir="ltr">
-            Commentary
-          </span>
-        )}
-      </div>
-      <div className="space-y-7">
+      <p className="text-[10px] font-sans uppercase tracking-widest text-rashi/60 mb-3">רש&quot;י</p>
+      <div className="space-y-4">
         {entries.map((entry) => (
           <div key={entry.id} className="border-r-4 border-rashi/40 pr-4">
             <p className="font-serif font-bold text-rashi text-sm leading-snug mb-0.5">{entry.author}</p>

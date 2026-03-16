@@ -8,15 +8,8 @@ interface TosafotSectionProps {
 export default function TosafotSection({ entries, lang }: TosafotSectionProps) {
   return (
     <section>
-      <div className="flex items-baseline gap-3 mb-6 pb-2 border-b border-tosafot/30">
-        <h2 className="section-title text-tosafot mb-0 pb-0 border-0">תוספות</h2>
-        {lang === 'en' && (
-          <span className="font-display italic text-tosafot/60 text-base" dir="ltr">
-            Legal Rulings
-          </span>
-        )}
-      </div>
-      <div className="space-y-7">
+      <p className="text-[10px] font-sans uppercase tracking-widest text-tosafot/60 mb-3">תוספות</p>
+      <div className="space-y-4">
         {entries.map((entry) => (
           <div key={entry.id} className="border-r-4 border-tosafot/40 pr-4">
             <p className="font-serif font-bold text-tosafot text-sm leading-snug mb-1">{entry.title}</p>
