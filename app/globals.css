@@ -11,17 +11,6 @@
     @apply bg-parchment-100 text-ink font-serif;
   }
 
-  /* Subtle parchment texture */
-  .parchment-texture {
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 28px,
-        rgba(200, 184, 138, 0.15) 28px,
-        rgba(200, 184, 138, 0.15) 29px
-      );
-  }
 }
 
 @layer components {
@@ -40,23 +29,23 @@
   }
 
   .section-title {
-    @apply text-xs font-bold uppercase tracking-widest mb-3 pb-1 border-b border-border;
+    @apply text-[11px] font-semibold uppercase tracking-wider mb-4 pb-1 border-b border-border/60;
   }
 
   .hebrew-text {
-    @apply leading-8 text-base;
+    @apply leading-loose text-lg;
     direction: rtl;
     unicode-bidi: embed;
   }
 
   .english-text {
-    @apply text-sm leading-6 text-gray-600 mt-2 font-sans;
+    @apply text-sm leading-relaxed text-gray-500 mt-2 font-sans;
     direction: ltr;
     unicode-bidi: embed;
   }
 
   .speaker-label {
-    @apply font-bold text-sm mb-1;
+    @apply font-semibold text-sm mb-1.5;
   }
 
   .source-label {

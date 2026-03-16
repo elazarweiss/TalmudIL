@@ -20,7 +20,7 @@ export default function DafHeader({
   onLangToggle,
 }: DafHeaderProps) {
   return (
-    <header className="border-b-2 border-border bg-parchment-200 px-6 py-4">
+    <header className="border-b border-border/60 bg-parchment-100 px-6 py-5">
       <div className="max-w-7xl mx-auto flex flex-col items-center gap-1 relative">
         {/* Platform title */}
         <h1 className="text-2xl font-black tracking-tight text-ink">
@@ -52,7 +52,7 @@ export default function DafHeader({
         <div className="mt-2 flex items-center gap-3 text-sm font-sans text-gray-600">
           <span className="font-semibold text-mishnah">{sederLabel}</span>
           <span className="text-border">·</span>
-          <span className="font-bold text-lg text-ink">
+          <span className="font-semibold text-ink">
             מסכת {tractateLabel}
           </span>
           <span className="text-border">·</span>

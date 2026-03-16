@@ -38,22 +38,22 @@ export default function DafPage({ data, sederLabel, tractateLabel }: DafPageProp
           Visual left  (col 3): Rashi
       */}
       <main className="flex-1 max-w-7xl mx-auto w-full px-4 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-[25%_50%_25%] gap-0 border border-border bg-parchment-50 rounded shadow-sm parchment-texture">
+        <div className="grid grid-cols-1 md:grid-cols-[25%_50%_25%] gap-0 border border-border/50 bg-parchment-50 rounded shadow-sm">
 
           {/* Column 1 (Visual Right in RTL): Tosafot — legal commentaries */}
-          <div className="daf-column border-b md:border-b-0 md:border-l border-border p-5 bg-parchment-50/80">
+          <div className="daf-column border-b md:border-b-0 md:border-l border-border/50 px-6 py-8 bg-parchment-50/80">
             <TosafotSection entries={data.tosafot} lang={lang} />
           </div>
 
           {/* Column 2 (Visual Center): Mishnah + Gemara — primary text */}
-          <div className="daf-column border-b md:border-b-0 p-5 bg-white/40">
+          <div className="daf-column border-b md:border-b-0 px-6 py-8 bg-white/40">
             <MishnahSection entries={data.mishnah} lang={lang} />
-            <div className="border-t border-border/50 my-4" />
+            <div className="border-t border-border/50 my-6" />
             <GemaraSection entries={data.gemara} lang={lang} />
           </div>
 
           {/* Column 3 (Visual Left in RTL): Rashi — commentary */}
-          <div className="daf-column p-5 bg-parchment-50/80">
+          <div className="daf-column px-6 py-8 bg-parchment-50/80">
             <RashiSection entries={data.rashi} lang={lang} />
           </div>
 

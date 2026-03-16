@@ -13,7 +13,7 @@ export default function TosafotSection({ entries, lang }: TosafotSectionProps) {
       </h2>
       <div className="space-y-5">
         {entries.map((entry) => (
-          <div key={entry.id} className="bg-tosafot-light rounded p-3 border border-tosafot/20">
+          <div key={entry.id} className="border-r-4 border-tosafot/70 pr-4 py-1">
             <p className="font-bold text-tosafot text-sm mb-0.5">{entry.title}</p>
             {lang === 'en' && (
               <p className="text-xs font-sans text-gray-500 mb-2 italic" dir="ltr">

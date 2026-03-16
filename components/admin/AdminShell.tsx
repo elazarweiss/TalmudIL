@@ -34,18 +34,18 @@ export default function AdminShell({
   return (
     <div className="h-screen flex flex-col overflow-hidden" dir="rtl">
       {/* Header */}
-      <header className="bg-ink text-parchment-100 px-4 py-2.5 flex items-center justify-between shrink-0 border-b border-parchment-300/20">
+      <header className="bg-parchment-200 text-ink px-4 py-2.5 flex items-center justify-between shrink-0 border-b border-border">
         <span className="font-serif font-bold text-base">{t.adminTitle}</span>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
-            className="font-sans text-xs text-parchment-300 hover:text-parchment-100 px-3 py-1 rounded-full border border-parchment-300/40 hover:border-parchment-300/80 transition-colors"
+            className="font-sans text-xs text-gray-600 hover:text-ink px-3 py-1 rounded-full border border-border hover:border-gray-400 transition-colors"
           >
             {t.switchLang}
           </button>
           <button
             onClick={handleLogout}
-            className="font-sans text-xs text-parchment-300/70 hover:text-parchment-100 px-2 py-1 transition-colors"
+            className="font-sans text-xs text-gray-500 hover:text-ink px-2 py-1 transition-colors"
           >
             {t.logout}
           </button>
@@ -54,7 +54,7 @@ export default function AdminShell({
 
       {/* Body: sidebar + main */}
       <div className="flex flex-1 overflow-hidden">
-        <aside className="w-56 bg-ink text-parchment-100 shrink-0 overflow-hidden flex flex-col border-l border-parchment-300/20">
+        <aside className="w-56 bg-parchment-50 text-ink shrink-0 overflow-hidden flex flex-col border-l border-border">
           <SidebarTree
             sedarim={sedarim}
             view={view}

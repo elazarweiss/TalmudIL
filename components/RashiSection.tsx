@@ -13,7 +13,7 @@ export default function RashiSection({ entries, lang }: RashiSectionProps) {
       </h2>
       <div className="space-y-5">
         {entries.map((entry) => (
-          <div key={entry.id} className="bg-rashi-light rounded p-3 border border-rashi/20">
+          <div key={entry.id} className="border-r-4 border-rashi/70 pr-4 py-1">
             <p className="font-bold text-rashi text-sm mb-0.5">{entry.author}</p>
             {lang === 'en' && (
               <p className="text-xs font-sans text-gray-500 mb-2 italic" dir="ltr">

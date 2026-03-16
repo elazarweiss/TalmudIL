@@ -8,15 +8,12 @@ interface MishnahSectionProps {
 export default function MishnahSection({ entries, lang }: MishnahSectionProps) {
   return (
     <section className="mb-6">
-      <h2
-        className="section-title text-mishnah border-mishnah"
-        style={{ borderColor: 'var(--tw-prose-hr, #5c3d1e)' }}
-      >
+      <h2 className="section-title text-mishnah border-mishnah">
         <span className="border-b-2 border-mishnah pb-0.5">משנה</span>
       </h2>
       <div className="space-y-5">
         {entries.map((entry) => (
-          <div key={entry.id} className="bg-mishnah-light rounded p-3 border border-mishnah/20">
+          <div key={entry.id} className="border-r-4 border-mishnah/70 pr-4 py-1">
             <p className="hebrew-text text-mishnah font-medium">{entry.text}</p>
             {lang === 'en' && (
               <p className="english-text" dir="ltr">{entry.he}</p>
