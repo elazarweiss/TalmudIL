@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Frank_Ruhl_Libre, Assistant } from 'next/font/google';
+import { Frank_Ruhl_Libre, Assistant, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 
 const frankRuhl = Frank_Ruhl_Libre({
@@ -13,6 +13,14 @@ const assistant = Assistant({
   subsets: ['hebrew', 'latin'],
   weight: ['300', '400', '600', '700'],
   variable: '--font-assistant',
+  display: 'swap',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-cormorant',
   display: 'swap',
 });
 
@@ -31,7 +39,7 @@ export default function RootLayout({
     <html
       lang="he"
       dir="rtl"
-      className={`${frankRuhl.variable} ${assistant.variable}`}
+      className={`${frankRuhl.variable} ${assistant.variable} ${cormorant.variable}`}
     >
       <body className="min-h-screen bg-parchment-100 text-ink font-serif">
         {children}
