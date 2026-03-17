@@ -33,7 +33,7 @@
   }
 
   .hebrew-text {
-    @apply leading-loose text-lg;
+    @apply leading-normal text-lg;
     direction: rtl;
     unicode-bidi: embed;
   }

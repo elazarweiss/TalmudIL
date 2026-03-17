@@ -7,18 +7,16 @@ interface GemaraSectionProps {
 
 export default function GemaraSection({ entries, lang }: GemaraSectionProps) {
   return (
-    <section>
-      <p className="text-[10px] font-sans uppercase tracking-widest text-gemara/60 mb-3">גמרא</p>
-      <div className="space-y-4">
+    <section className="mb-0">
+      <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-ink/35 mb-3">ג  מ  ר  א</p>
+      <div className="space-y-5">
         {entries.map((entry) => (
-          <div key={entry.id} className="border-r-4 border-gemara/40 pr-4">
-            <p className="font-serif font-bold text-gemara text-sm mb-2 leading-snug">{entry.speaker}</p>
-            <p className="hebrew-text text-sm text-ink">{entry.text}</p>
+          <div key={entry.id}>
+            <span className="font-serif font-bold text-ink/80 text-base leading-snug">{entry.speaker} — </span>
+            <p className="hebrew-text text-xl text-ink">{entry.text}</p>
             {lang === 'en' && <p className="english-text" dir="ltr">{entry.he}</p>}
             {lang === 'en' && entry.source && (
-              <p className="font-display italic text-[13px] text-gray-400 mt-2" dir="ltr">
-                — {entry.source}
-              </p>
+              <p className="font-display italic text-[12px] text-ink/40 mt-1" dir="ltr">— {entry.source}</p>
             )}
           </div>
         ))}

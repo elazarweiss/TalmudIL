@@ -8,19 +8,17 @@ interface TosafotSectionProps {
 export default function TosafotSection({ entries, lang }: TosafotSectionProps) {
   return (
     <section>
-      <p className="text-[10px] font-sans uppercase tracking-widest text-tosafot/60 mb-3">תוספות</p>
-      <div className="space-y-4">
+      <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-ink/35 mb-3">ת  ו  ס  פ  ו  ת</p>
+      <div className="divide-y divide-border/30">
         {entries.map((entry) => (
-          <div key={entry.id} className="border-r-4 border-tosafot/40 pr-4">
-            <p className="font-serif font-bold text-tosafot text-sm leading-snug mb-1">{entry.title}</p>
+          <div key={entry.id} className="py-3 first:pt-0">
+            <p className="font-serif font-bold text-sm text-ink leading-snug mb-1">{entry.title}</p>
             {lang === 'en' && (
-              <p className="font-sans text-[10px] tracking-widest uppercase text-gray-400 mb-2" dir="ltr">
-                {entry.caseRef}
-              </p>
+              <p className="font-sans text-[9px] tracking-widest uppercase text-ink/35 mb-1.5" dir="ltr">{entry.caseRef}</p>
             )}
-            <p className="hebrew-text text-sm text-ink">{entry.text}</p>
+            <p className="hebrew-text text-sm leading-snug text-ink/85">{entry.text}</p>
             {lang === 'en' && (
-              <p className="english-text text-xs" dir="ltr">{entry.he}</p>
+              <p className="english-text text-xs mt-1" dir="ltr">{entry.he}</p>
             )}
           </div>
         ))}
