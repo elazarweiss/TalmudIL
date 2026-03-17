@@ -7,14 +7,16 @@ interface MishnahSectionProps {
 
 export default function MishnahSection({ entries, lang }: MishnahSectionProps) {
   return (
-    <section className="border-2 border-mishnah/50 bg-mishnah-light p-4 mb-6">
-      <p className="text-center text-[10px] font-sans uppercase tracking-widest text-mishnah/60 mb-3">משנה</p>
-      <div className="space-y-4">
+    <section>
+      <p className="text-[10px] font-sans uppercase tracking-widest text-mishnah/60 mb-5 text-center">
+        משנה
+      </p>
+      <div className="space-y-6">
         {entries.map((entry) => (
           <div key={entry.id}>
-            <p className="hebrew-text text-ink leading-loose">{entry.text}</p>
+            <p className="hebrew-text text-xl font-serif leading-loose text-ink">{entry.text}</p>
             {lang === 'en' && (
-              <p className="english-text mt-3 leading-relaxed" dir="ltr">{entry.he}</p>
+              <p className="english-text text-sm leading-relaxed" dir="ltr">{entry.he}</p>
             )}
           </div>
         ))}
