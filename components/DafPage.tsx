@@ -29,12 +29,12 @@ export default function DafPage({ data, sederLabel, tractateLabel }: DafPageProp
           onLangToggle={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
         />
         <div className="daf-body">
-          <div className="left-gloss">
-            <TosafotSection entries={data.tosafot} lang={lang} />
-          </div>
           <div className="main-sugya">
             <MishnahSection entries={data.mishnah} lang={lang} />
             <GemaraSection entries={data.gemara} lang={lang} />
+          </div>
+          <div className="left-gloss">
+            <TosafotSection entries={data.tosafot} lang={lang} />
           </div>
           <div className="right-gloss">
             <RashiSection entries={data.rashi} lang={lang} />
