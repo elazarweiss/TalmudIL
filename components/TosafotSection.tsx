@@ -8,10 +8,10 @@ interface TosafotSectionProps {
 export default function TosafotSection({ entries, lang }: TosafotSectionProps) {
   return (
     <section>
-      <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-ink/35 mb-3">ת  ו  ס  פ  ו  ת</p>
-      <div className="divide-y divide-border/30">
+      <p className="text-[8px] font-sans uppercase tracking-[0.2em] text-ink/35 mb-1.5">ת  ו  ס  פ  ו  ת</p>
+      <div className="divide-y divide-border/20">
         {entries.map((entry) => (
-          <div key={entry.id} className="py-1.5 first:pt-0">
+          <div key={entry.id} className="py-1 first:pt-0">
             <p className="font-serif font-bold text-xs text-ink leading-tight mb-0.5">{entry.title}</p>
             {lang === 'en' && (
               <p className="font-sans text-[9px] tracking-widest uppercase text-ink/35 mb-1" dir="ltr">{entry.caseRef}</p>
