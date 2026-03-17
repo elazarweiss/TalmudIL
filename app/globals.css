@@ -117,55 +117,67 @@
 }
 
 /* ── DafLayout — Vilna folio ─────────────────────────── */
+
+/* OUTER GRID: visible parchment margins flanking the daf, like a printed book */
 .daf-folio-sheet {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 4px 4px;
+  display: grid;
+  grid-template-columns: 1fr min(1100px, 100%) 1fr;
+  min-height: 100vh;
 }
 
+/* Header spans all three columns so title runs full width */
+.daf-folio-sheet > header {
+  grid-column: 1 / -1;
+}
+
+/* INNER GRID: fixed 220px commentary columns flanking a fluid center */
 .daf-folio-body {
+  grid-column: 2;
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 220px 1fr 220px;
+  grid-template-areas:
+    "left main right"
+    ".    bottom .   ";
   align-items: start;
   column-gap: 0;
   row-gap: 0;
 }
 
 .daf-folio-main {
-  grid-column: 2;
-  grid-row: 1;
+  grid-area: main;
   padding: 0 8px;
   border-left:  1px solid rgba(60, 45, 25, 0.22);
   border-right: 1px solid rgba(60, 45, 25, 0.22);
 }
 
 .daf-folio-left {
-  grid-column: 1;
-  grid-row: 1;
+  grid-area: left;
   padding: 0 4px;
   font-size: 0.65em;
   line-height: 1.28;
 }
 
 .daf-folio-right {
-  grid-column: 3;
-  grid-row: 1;
+  grid-area: right;
   padding: 0 4px;
   font-size: 0.65em;
   line-height: 1.28;
 }
 
 .daf-folio-bottom {
-  grid-column: 2;
-  grid-row: 2;
+  grid-area: bottom;
   padding: 4px 8px 0;
   border-top: 1px solid rgba(60, 45, 25, 0.18);
   font-size: 0.68em;
   text-align: center;
 }
 
+/* Mobile: collapse both grids to linear reading order */
 @media (max-width: 767px) {
+  .daf-folio-sheet {
+    display: block;
+  }
+
   .daf-folio-body {
     display: flex;
     flex-direction: column;

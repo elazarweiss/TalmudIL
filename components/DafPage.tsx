@@ -13,14 +13,12 @@ export default function DafPage({ data, sederLabel, tractateLabel }: DafPageProp
   const [lang, setLang] = useState<'he' | 'en'>('en');
 
   return (
-    <div className="min-h-screen">
-      <DafLayout
-        data={data}
-        sederLabel={sederLabel}
-        tractateLabel={tractateLabel}
-        lang={lang}
-        onLangToggle={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
-      />
-    </div>
+    <DafLayout
+      data={data}
+      sederLabel={sederLabel}
+      tractateLabel={tractateLabel}
+      lang={lang}
+      onLangToggle={() => setLang((l) => (l === 'en' ? 'he' : 'en'))}
+    />
   );
 }
