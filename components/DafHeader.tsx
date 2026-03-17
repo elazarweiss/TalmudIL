@@ -20,7 +20,7 @@ export default function DafHeader({
   onLangToggle,
 }: DafHeaderProps) {
   return (
-    <header className="bg-parchment-100 px-6 pt-6 pb-4 relative">
+    <header className="px-6 pt-4 pb-3 relative">
       <div className="max-w-[1440px] mx-auto relative">
 
         {/* Corner: daf number (top-right, like a real folio) */}
@@ -48,12 +48,12 @@ export default function DafHeader({
         </button>
 
         {/* Central title block */}
-        <div className="text-center pt-2 pb-5">
+        <div className="text-center pt-1 pb-3">
           <h1 className="font-serif text-5xl font-black text-ink leading-tight tracking-tight">תלמוד ישראל</h1>
           <p className="font-display italic text-sm text-ink/50 mt-1 tracking-wide" dir="ltr">The Israeli Constitutional Talmud</p>
 
           {/* Ornamental rule */}
-          <div className="flex items-center justify-center gap-3 mt-4">
+          <div className="flex items-center justify-center gap-3 mt-3">
             <span className="flex-1 max-w-[120px] h-px bg-border/60" />
             <div className="text-sm font-serif font-semibold text-ink/70 tracking-wide">
               {sederLabel} · מסכת {tractateLabel} · דף {daf}

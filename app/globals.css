@@ -59,7 +59,7 @@
 .daf-sheet {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 0 40px 48px;
+  padding: 0 20px 20px;
   background: transparent;
 }
 
@@ -69,8 +69,8 @@
   grid-template-areas:
     "left main  right"
     "left bottom right";
-  column-gap: 20px;
-  row-gap: 18px;
+  column-gap: 0;
+  row-gap: 0;
   align-items: start;
 }
 
@@ -79,7 +79,6 @@
 .right-gloss { grid-area: right; }
 .bottom-gloss { grid-area: bottom; }
 
-/* No visual containers — typography creates structure, not space */
 .left-gloss,
 .right-gloss,
 .bottom-gloss,
@@ -90,19 +89,22 @@
   box-shadow: none;
 }
 
+/* Hairline column rules — printed folio style */
 .main-sugya {
-  padding: 8px 10px 0;
+  padding: 4px 16px 0;
+  border-left: 1px solid rgba(60, 45, 25, 0.22);
+  border-right: 1px solid rgba(60, 45, 25, 0.22);
 }
 
 .left-gloss,
 .right-gloss {
-  padding: 6px 8px 0;
+  padding: 4px 10px 0;
   font-size: 0.88em;
   line-height: 1.5;
 }
 
 .bottom-gloss {
-  padding: 18px 14px 0;
+  padding: 10px 14px 0;
   border-top: 1px solid rgba(60, 45, 25, 0.18);
 }
 
