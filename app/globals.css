@@ -118,14 +118,14 @@
 
 /* ── DafLayout — Vilna folio ─────────────────────────── */
 .daf-folio-sheet {
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 0 8px 8px;
+  padding: 0 4px 4px;
 }
 
 .daf-folio-body {
   display: grid;
-  grid-template-columns: 1.1fr 1.6fr 1.1fr;
+  grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto;
   align-items: start;
   column-gap: 0;
@@ -135,7 +135,7 @@
 .daf-folio-main {
   grid-column: 2;
   grid-row: 1;
-  padding: 0 10px;
+  padding: 0 8px;
   border-left:  1px solid rgba(60, 45, 25, 0.22);
   border-right: 1px solid rgba(60, 45, 25, 0.22);
 }
@@ -143,25 +143,25 @@
 .daf-folio-left {
   grid-column: 1;
   grid-row: 1;
-  padding: 0 6px;
-  font-size: 0.72em;
-  line-height: 1.32;
+  padding: 0 4px;
+  font-size: 0.65em;
+  line-height: 1.28;
 }
 
 .daf-folio-right {
   grid-column: 3;
   grid-row: 1;
-  padding: 0 6px;
-  font-size: 0.72em;
-  line-height: 1.32;
+  padding: 0 4px;
+  font-size: 0.65em;
+  line-height: 1.28;
 }
 
 .daf-folio-bottom {
   grid-column: 2;
   grid-row: 2;
-  padding: 5px 10px 0;
+  padding: 4px 8px 0;
   border-top: 1px solid rgba(60, 45, 25, 0.18);
-  font-size: 0.70em;
+  font-size: 0.68em;
   text-align: center;
 }
 
