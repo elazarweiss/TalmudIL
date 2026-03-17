@@ -66,18 +66,14 @@
 .daf-body {
   display: grid;
   grid-template-columns: 1.05fr 2.2fr 1.05fr;
-  grid-template-areas:
-    "left main  right"
-    "left bottom right";
   column-gap: 0;
   row-gap: 0;
-  align-items: start;
 }
 
-.left-gloss  { grid-area: left; }
-.main-sugya  { grid-area: main; }
-.right-gloss { grid-area: right; }
-.bottom-gloss { grid-area: bottom; }
+.main-sugya  { grid-column: 2; grid-row: 1; align-self: start; }
+.right-gloss { grid-column: 3; grid-row: 1; align-self: start; }
+.left-gloss  { grid-column: 1; grid-row: 1; align-self: end;   }
+.bottom-gloss{ grid-column: 2; grid-row: 2; }
 
 .left-gloss,
 .right-gloss,
