@@ -7,7 +7,7 @@ interface MishnahSectionProps {
 
 export default function MishnahSection({ entries, lang }: MishnahSectionProps) {
   return (
-    <section className="my-6">
+    <section className="mb-4">
       {/* Outer ornamental frame */}
       <div className="border border-ink/20 bg-parchment-50 px-5 py-4 mx-2 relative">
         {/* Double inner rule — traditional box look */}

@@ -7,7 +7,7 @@ interface GemaraSectionProps {
 
 export default function GemaraSection({ entries, lang }: GemaraSectionProps) {
   return (
-    <section className="mb-0">
+    <section className="mt-4">
       <p className="text-[9px] font-sans uppercase tracking-[0.2em] text-ink/35 mb-3">ג  מ  ר  א</p>
       <div className="space-y-5">
         {entries.map((entry) => (

@@ -55,6 +55,69 @@
   }
 }
 
+/* ── Daf folio surface ───────────────────────────────── */
+.daf-sheet {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 40px 48px;
+  background: transparent;
+}
+
+.daf-body {
+  display: grid;
+  grid-template-columns: 1.05fr 2.2fr 1.05fr;
+  grid-template-areas:
+    "left main  right"
+    "left bottom right";
+  column-gap: 20px;
+  row-gap: 18px;
+  align-items: start;
+}
+
+.left-gloss  { grid-area: left; }
+.main-sugya  { grid-area: main; }
+.right-gloss { grid-area: right; }
+.bottom-gloss { grid-area: bottom; }
+
+/* No visual containers — typography creates structure, not space */
+.left-gloss,
+.right-gloss,
+.bottom-gloss,
+.main-sugya {
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.main-sugya {
+  padding: 8px 10px 0;
+}
+
+.left-gloss,
+.right-gloss {
+  padding: 6px 8px 0;
+  font-size: 0.88em;
+  line-height: 1.5;
+}
+
+.bottom-gloss {
+  padding: 18px 14px 0;
+  border-top: 1px solid rgba(60, 45, 25, 0.18);
+}
+
+/* Mobile: linear reading order */
+@media (max-width: 767px) {
+  .daf-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .main-sugya   { order: 1; }
+  .bottom-gloss { order: 2; }
+  .left-gloss   { order: 3; font-size: 1em; }
+  .right-gloss  { order: 4; font-size: 1em; }
+}
+
 /* Accordion chevron animation */
 .accordion-chevron {
   transition: transform 150ms ease;
