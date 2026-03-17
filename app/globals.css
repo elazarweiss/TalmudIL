@@ -116,6 +116,68 @@
   .right-gloss  { order: 4; font-size: 1em; }
 }
 
+/* ── DafLayout wireframe ─────────────────────────────── */
+.daf-folio-sheet {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+}
+
+.daf-folio-body {
+  display: grid;
+  grid-template-columns: 1fr minmax(620px, 720px) 1fr;
+  grid-template-areas:
+    ". main ."
+    "left main right"
+    "left main right"
+    ". main ."
+    ". bottom .";
+  column-gap: 0;
+  row-gap: 0;
+}
+
+.daf-folio-main {
+  grid-area: main;
+  padding: 0 16px;
+  border-left:  1px solid rgba(60, 45, 25, 0.22);
+  border-right: 1px solid rgba(60, 45, 25, 0.22);
+}
+
+.daf-folio-left {
+  grid-area: left;
+  align-self: end;
+  padding: 0 10px;
+  font-size: 0.80em;
+  line-height: 1.4;
+}
+
+.daf-folio-right {
+  grid-area: right;
+  align-self: start;
+  padding: 0 10px;
+  font-size: 0.80em;
+  line-height: 1.4;
+}
+
+.daf-folio-bottom {
+  grid-area: bottom;
+  padding: 10px 16px 0;
+  border-top: 1px solid rgba(60, 45, 25, 0.18);
+  font-size: 0.75em;
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+  .daf-folio-body {
+    display: flex;
+    flex-direction: column;
+  }
+  .daf-folio-main   { order: 1; }
+  .daf-folio-bottom { order: 2; }
+  .daf-folio-left   { order: 3; font-size: 1em; }
+  .daf-folio-right  { order: 4; font-size: 1em; }
+}
+
 /* Accordion chevron animation */
 .accordion-chevron {
   transition: transform 150ms ease;
