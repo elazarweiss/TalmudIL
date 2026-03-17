@@ -130,42 +130,61 @@
   grid-column: 1 / -1;
 }
 
-/* INNER GRID: fixed 220px commentary columns flanking a fluid center */
+/* INNER GRID: fixed 220px commentary columns flanking a fluid center.
+   4-row explicit grid:
+     row 1 — left commentary + right-top commentary (alongside top of main text)
+     row 2 — 2em gap (bare parchment on both sides, mid-page breathing room)
+     row 3 — right-mid commentary (alongside mid-section of main text)
+     row 4 — absorbs remaining main-text height; side columns are empty here
+   Main text spans rows 1–4 so it flows continuously; side blocks stay short. */
 .daf-folio-body {
   grid-column: 2;
   display: grid;
   grid-template-columns: 220px 1fr 220px;
-  grid-template-areas:
-    "left main right"
-    ".    bottom .   ";
+  grid-template-rows: auto 2em auto auto;
   align-items: start;
   column-gap: 0;
   row-gap: 0;
 }
 
 .daf-folio-main {
-  grid-area: main;
+  grid-column: 2;
+  grid-row: 1 / 5;
   padding: 0 8px;
   border-left:  1px solid rgba(60, 45, 25, 0.22);
   border-right: 1px solid rgba(60, 45, 25, 0.22);
 }
 
+/* Left commentary — top only (row 1); ends well before main text does */
 .daf-folio-left {
-  grid-area: left;
+  grid-column: 1;
+  grid-row: 1;
   padding: 0 4px;
   font-size: 0.65em;
   line-height: 1.28;
 }
 
-.daf-folio-right {
-  grid-area: right;
+/* Right commentary — upper block (row 1) */
+.daf-folio-right-top {
+  grid-column: 3;
+  grid-row: 1;
   padding: 0 4px;
   font-size: 0.65em;
   line-height: 1.28;
 }
 
+/* Right commentary — lower block (row 3, after the 2em gap in row 2) */
+.daf-folio-right-mid {
+  grid-column: 3;
+  grid-row: 3;
+  padding: 0 4px;
+  font-size: 0.65em;
+  line-height: 1.28;
+}
+
+/* Footer — auto-placed into implicit row 5, spans all 3 columns */
 .daf-folio-bottom {
-  grid-area: bottom;
+  grid-column: 1 / -1;
   padding: 4px 8px 0;
   border-top: 1px solid rgba(60, 45, 25, 0.18);
   font-size: 0.68em;
@@ -182,10 +201,11 @@
     display: flex;
     flex-direction: column;
   }
-  .daf-folio-main   { order: 1; font-size: 1em; }
-  .daf-folio-bottom { order: 2; }
-  .daf-folio-left   { order: 3; font-size: 0.9em; }
-  .daf-folio-right  { order: 4; font-size: 0.9em; }
+  .daf-folio-main        { order: 1; font-size: 1em; }
+  .daf-folio-bottom      { order: 2; }
+  .daf-folio-left        { order: 3; font-size: 0.9em; }
+  .daf-folio-right-top   { order: 4; font-size: 0.9em; }
+  .daf-folio-right-mid   { order: 5; font-size: 0.9em; }
 }
 
 /* Accordion chevron animation */

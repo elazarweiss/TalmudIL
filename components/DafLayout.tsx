@@ -34,8 +34,11 @@ export default function DafLayout({ data, sederLabel, tractateLabel, lang, onLan
         <div className="daf-folio-left">
           <TosafotSection entries={data.tosafot} lang={lang} />
         </div>
-        <div className="daf-folio-right">
-          <RashiSection entries={data.rashi} lang={lang} />
+        <div className="daf-folio-right-top">
+          <RashiSection entries={data.rashi.slice(0, 1)} lang={lang} />
+        </div>
+        <div className="daf-folio-right-mid">
+          <RashiSection entries={data.rashi.slice(1)} lang={lang} />
         </div>
         {lang === 'en' && (
           <div className="daf-folio-bottom">
